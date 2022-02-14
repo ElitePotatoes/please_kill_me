@@ -109,9 +109,9 @@ void test_twoMatricesEqual_nonEqualMatricesByValue() {
     freeMemMatrix(needM);
 }
 void test_twoMatricesEqual() {
-    test_twoMatricesEqual_equalMatrices;
-    test_twoMatricesEqual_nonEqualMatricesBySize;
-    test_twoMatricesEqual_nonEqualMatricesByValue;
+    test_twoMatricesEqual_equalMatrices();
+    test_twoMatricesEqual_nonEqualMatricesBySize();
+    test_twoMatricesEqual_nonEqualMatricesByValue();
 }
 
 void test_isEMatrix_trueEMatrix() {
@@ -136,9 +136,9 @@ void test_isEMatrix_nonEMatrixByValue() {
     freeMemMatrix(readM);
 }
 void test_isEMatrix() {
-    test_isEMatrix_trueEMatrix;
-    test_isEMatrix_nonEMatrixBySize;
-    test_isEMatrix_nonEMatrixByValue;
+    test_isEMatrix_trueEMatrix();
+    test_isEMatrix_nonEMatrixBySize();
+    test_isEMatrix_nonEMatrixByValue();
 }
 
 void test_isEMatrix_trueSymmetricMatrix() {
@@ -177,13 +177,14 @@ void test_transposeSquareMatrix_standartMatrix() {
     matrix needM = createMatrixFromArray((int[]) {1, 4, 7,
                                                   2, 5, 8,
                                                   3, 6, 9}, 3, 3);
+    transposeSquareMatrix(readM);
     assert(twoMatricesEqual(readM, needM));
 
     freeMemMatrix(readM);
     freeMemMatrix(needM);
 }
 void test_transposeSquareMatrix() {
-    test_transposeSquareMatrix_standartMatrix;
+    test_transposeSquareMatrix_standartMatrix();
 }
 
 void test_getMinValuePos_standartMatrix() {

@@ -141,7 +141,7 @@ bool isEMatrix(matrix const m) {
 
     for (size_t i = 0; i < m.nRows; ++i)
         for (size_t j = 0; j < m.nCols; ++j)
-            if (i == j && m.values[i][j] != 1 || m.values[i][j] != 0)
+            if (i == j && m.values[i][j] != 1 || i != j && m.values[i][j] != 0)
                 return false;
 
     return true;

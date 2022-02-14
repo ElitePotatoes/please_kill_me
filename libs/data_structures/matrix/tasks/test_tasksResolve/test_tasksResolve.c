@@ -1,5 +1,6 @@
 #include "test_tasksResolve.h"
 
+//matrix_task_first
 void test_swapRowsWithMaxAndMinValue_standart() {
     matrix readM = createMatrixFromArray((int[]) {1, 2, 3,
                                                   4, 5, 6,
@@ -33,9 +34,23 @@ void test_swapRowsWithMaxAndMinValue() {
     test_swapRowsWithMaxAndMinValue_twoElementsInSameRow();
 }
 
-void test_task_second() {
+//matrix_task_second
+void test_sortRowsByMaxElements_standart() {
+    matrix readM = createMatrixFromArray((int[]) {7, 1, 2,
+                                                  1, 8, 1,
+                                                  3, 2, 3}, 3, 3);
+    matrix needM = createMatrixFromArray((int[]) {3, 2, 3,
+                                                  7, 1, 2,
+                                                  1, 8, 1}, 3, 3);
+    assert(twoMatricesEqual(readM, needM));
 
+    freeMemMatrix(readM);
+    freeMemMatrix(needM);
 }
+void test_sortRowsByMaxElements() {
+    test_sortRowsByMaxElements_standart();
+}
+
 void test_task_third() {
 
 }
@@ -57,7 +72,7 @@ void test_task_eighth() {
 
 void test_matrixTasks() {
     test_swapRowsWithMaxAndMinValue();
-    test_task_second();
+    test_sortRowsByMaxElements();
     test_task_third();
     test_task_fourth();
     test_task_fifth();
