@@ -15,8 +15,8 @@ typedef struct matrix {
 } matrix;
 
 typedef struct position {
-    int rowIndex;
-    int colIndex;
+    int rowIndex;   //индекс элемента в ряду
+    int colIndex;   //индекс элемента в столбце
 } position;
 
 //возвращает матрицу размером nRows на nCols.

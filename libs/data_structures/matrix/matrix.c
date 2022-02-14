@@ -5,6 +5,11 @@ void badIndex() {
     exit(1);
 }
 
+void badSquareMatrix() {
+    fprintf(stderr, "isn't square matrix\n");
+    exit(1);
+}
+
 matrix getMemMatrix(const int nRows, const int nCols) {
     int **values = (int **) malloc(sizeof(int *) * nRows);
     for (size_t i = 0; i < nRows; ++i)
@@ -22,7 +27,7 @@ matrix *getMemArrayOfMatrices(const int nMatrices, const int nRows, const int nC
 }
 
 void freeMemMatrix(matrix m) {
-    for (size_t i = 0; i < m.nCols; ++i)
+    for (size_t i = 0; i < m.nRows; ++i)
         free(m.values[i]);
 
     free(m.values);
@@ -32,7 +37,7 @@ void freeMemMatrices(matrix *ms, const int nMatrices) {
     for (size_t i = 0; i < nMatrices; ++i)
         freeMemMatrix(ms[i]);
 
-    free(ms);
+    free(ms->values);
 }
 
 void inputMatrix(matrix m) {
@@ -42,7 +47,8 @@ void inputMatrix(matrix m) {
 }
 
 void inputMatrices(matrix *ms, const int nMatrices) {
-
+    for (size_t i = 0; i < nMatrices; ++i)
+        inputMatrix(ms[i]);
 }
 
 void outputMatrix(matrix const m) {
@@ -57,7 +63,8 @@ void outputMatrix(matrix const m) {
 }
 
 void outputMatrices(matrix *ms, const int nMatrices) {
-
+    for (size_t i = 0; i < nMatrices; ++i)
+        outputMatrix(ms[i]);
 }
 
 void swapRows(matrix m, const int i1, const int i2) {
@@ -68,7 +75,7 @@ void swapRows(matrix m, const int i1, const int i2) {
 }
 
 void swapColumns(matrix m, const int j1, const int j2) {
-    if (j1 >= m.nRows || j2 >= m.nRows)
+    if (j1 >= m.nCols || j2 >= m.nCols)
         badIndex();
 
     for (size_t i = 0; i < m.nRows; ++i)
@@ -76,11 +83,40 @@ void swapColumns(matrix m, const int j1, const int j2) {
 }
 
 void insertionSortRowsMatrixByRowCriteria(matrix m, int (*criteria)(int *, int)) {
+    int criteriaArray[m.nRows];
+    for (size_t i = 0; i < m.nRows; ++i)
+        criteriaArray[i] = criteria(m.values[i], m.nCols);
 
+    for (size_t i = 0; i < m.nRows; ++i) {
+        size_t maxIndex = i;
+        for (size_t j = i; j < m.nRows; j++)
+            if (criteriaArray[j] > criteriaArray[maxIndex])
+                maxIndex = j;
+
+        swapVoid(&criteriaArray[maxIndex], &criteriaArray[i], sizeof(int));
+        swapRows(m, i, maxIndex);
+    }
 }
 
 void insertionSortColsMatrixByColCriteria(matrix m, int (*criteria)(int *, int)) {
+    int criteriaArray[m.nCols];
+    int column[m.nRows];
+    for (size_t i = 0; i < m.nCols; ++i) {
+        for (size_t j = 0; i < m.nRows; ++i)
+            column[i] = m.values[i][j];
 
+        criteriaArray[i] = criteria(column, m.nRows);
+    }
+
+    for (size_t i = 0; i < m.nCols; ++i) {
+        size_t maxIndex = i;
+        for (size_t j = i; j < m.nCols; j++)
+            if (criteriaArray[j] > criteriaArray[maxIndex])
+                maxIndex = j;
+
+        swapVoid(&criteriaArray[maxIndex], &criteriaArray[i], sizeof(int));
+        swapColumns(m, i, maxIndex);
+    }
 }
 
 bool isSquareMatrix(matrix const m) {
@@ -104,8 +140,9 @@ bool isEMatrix(matrix const m) {
         return false;
 
     for (size_t i = 0; i < m.nRows; ++i)
-        if (m.values[i][i] != 1)
-            return false;
+        for (size_t j = 0; j < m.nCols; ++j)
+            if (i == j && m.values[i][j] != 1 || m.values[i][j] != 0)
+                return false;
 
     return true;
 }
@@ -123,10 +160,12 @@ bool isSymmetricMatrix(matrix const m) {
 }
 
 void transposeSquareMatrix(matrix m) {
-    if (isSquareMatrix(m))
-        for (size_t i = 0; i < m.nRows; ++i)
-            for (size_t j = i + 1; j < m.nCols; ++j)
-                swapVoid(&m.values[i][j], &m.values[j][i], sizeof(int));
+    if (!isSquareMatrix(m))
+        badSquareMatrix();
+
+    for (size_t i = 0; i < m.nRows; ++i)
+        for (size_t j = i + 1; j < m.nCols; ++j)
+            swapVoid(&m.values[i][j], &m.values[j][i], sizeof(int));
 }
 
 position getMinValuePos(matrix const m) {
