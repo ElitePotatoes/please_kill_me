@@ -1,0 +1,14 @@
+C:/Users/elite/CLionProjects/main/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/elite/CLionProjects/main/cmake-build-debug/CMakeFiles/course.dir
+C:/Users/elite/CLionProjects/main/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+C:/Users/elite/CLionProjects/main/cmake-build-debug/Libs/CMakeFiles/edit_cache.dir
+C:/Users/elite/CLionProjects/main/cmake-build-debug/Libs/CMakeFiles/rebuild_cache.dir
+C:/Users/elite/CLionProjects/main/cmake-build-debug/Libs/algorithms/CMakeFiles/algorithms.dir
+C:/Users/elite/CLionProjects/main/cmake-build-debug/Libs/algorithms/CMakeFiles/edit_cache.dir
+C:/Users/elite/CLionProjects/main/cmake-build-debug/Libs/algorithms/CMakeFiles/rebuild_cache.dir
+C:/Users/elite/CLionProjects/main/cmake-build-debug/Libs/data_structures/CMakeFiles/data_structures.dir
+C:/Users/elite/CLionProjects/main/cmake-build-debug/Libs/data_structures/CMakeFiles/edit_cache.dir
+C:/Users/elite/CLionProjects/main/cmake-build-debug/Libs/data_structures/CMakeFiles/rebuild_cache.dir
+C:/Users/elite/CLionProjects/main/cmake-build-debug/Libs/discrete_mathematics/CMakeFiles/discrete_mathematics.dir
+C:/Users/elite/CLionProjects/main/cmake-build-debug/Libs/discrete_mathematics/CMakeFiles/edit_cache.dir
+C:/Users/elite/CLionProjects/main/cmake-build-debug/Libs/discrete_mathematics/CMakeFiles/rebuild_cache.dir

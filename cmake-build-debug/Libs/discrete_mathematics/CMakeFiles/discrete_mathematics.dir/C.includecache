@@ -1,0 +1,20 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+C:/Users/elite/CLionProjects/Lab/libs/discrete_mathematics/lab_0/sets.c
+sets.h
+C:/Users/elite/CLionProjects/Lab/libs/discrete_mathematics/lab_0/sets.h
+
+C:/Users/elite/CLionProjects/Lab/libs/discrete_mathematics/lab_0/sets.h
+stdio.h
+-
+stdbool.h
+-
+assert.h
+-
+
