@@ -17,7 +17,7 @@ int main() {
     //SetConsoleOutputCP (CP_UTF8);
 
     test_matrix();
-    //test_matrixTasks();
+    test_matrixTasks();
 
     return 0;
 }

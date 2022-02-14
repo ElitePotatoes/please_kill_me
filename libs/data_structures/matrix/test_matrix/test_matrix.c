@@ -223,4 +223,4 @@ void test_matrix() {
     test_transposeSquareMatrix();
     test_getMinValuePos();
     test_getMaxValuePos();
-}
+} //100
