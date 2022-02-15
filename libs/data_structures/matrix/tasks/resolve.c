@@ -1,5 +1,6 @@
 #include "resolve.h"
 
+//first
 void swapRowsWithMaxAndMinValue(matrix m) {
     position minIndex = getMinValuePos(m);
     position maxIndex = getMaxValuePos(m);
@@ -7,7 +8,19 @@ void swapRowsWithMaxAndMinValue(matrix m) {
         swapRows(m, minIndex.rowIndex, maxIndex.rowIndex);
 }
 
-void task_second(matrix m) {}
+//second
+int getMax(const int a[], const size_t size) {
+    int maxValue = a[0];
+    for (size_t i = 1; i < size; ++i)
+        if (a[i] > maxValue)
+            maxValue = a[i];
+
+    return maxValue;
+}
+void sortRowsByMaxElements(matrix m) {
+    insertionSortRowsMatrixByRowCriteria(m, getMax);
+}
+
 void task_third(matrix m) {}
 void task_fourth(matrix m) {}
 bool task_fifth(matrix m) {}

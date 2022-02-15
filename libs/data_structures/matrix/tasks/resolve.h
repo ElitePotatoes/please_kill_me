@@ -5,8 +5,13 @@
 
 #include "../matrix.h"
 
+//first
 void swapRowsWithMaxAndMinValue(matrix m);
-void task_second(matrix m);
+
+//second
+int getMax(const int a[], size_t size);
+void sortRowsByMaxElements(matrix m);
+
 void task_third(matrix m);
 void task_fourth(matrix m);
 bool task_fifth(matrix m);
