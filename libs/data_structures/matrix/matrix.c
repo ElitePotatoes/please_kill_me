@@ -90,7 +90,7 @@ void insertionSortRowsMatrixByRowCriteria(matrix m, int (*criteria)(int *, int))
     for (size_t i = 0; i < m.nRows; ++i) {
         size_t maxIndex = i;
         for (size_t j = i; j < m.nRows; j++)
-            if (criteriaArray[j] > criteriaArray[maxIndex])
+            if (criteriaArray[j] < criteriaArray[maxIndex])
                 maxIndex = j;
 
         swapVoid(&criteriaArray[maxIndex], &criteriaArray[i], sizeof(int));

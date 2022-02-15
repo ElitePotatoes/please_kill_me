@@ -34,10 +34,10 @@ void test_insertionSortRowsMatrixByRowCriteria_SumArrays() {
     matrix readM = createMatrixFromArray((int[]) {1, 1, 1,
                                                   0, 0, 0,
                                                   2, 2, 2}, 3, 3);
-    matrix needM = createMatrixFromArray((int[]) {2, 2, 2,
+    matrix needM = createMatrixFromArray((int[]) {0, 0, 0,
                                                   1, 1, 1,
-                                                  0, 0, 0}, 3, 3);
-    insertionSortRowsMatrixByRowCriteria(readM, (int (*)(int *, int)) sumElementsArray);
+                                                  2, 2, 2}, 3, 3);
+    insertionSortRowsMatrixByRowCriteria(readM, sumElementsArray);
     assert(twoMatricesEqual(readM, needM));
 
     freeMemMatrix(readM);
@@ -48,13 +48,13 @@ void test_insertionSortRowsMatrixByRowCriteria() {
 }
 
 void test_insertionSortColsMatrixByColCriteria_SumArrays() {
-    matrix readM = createMatrixFromArray((int[]) {1, 2, 3,
-                                                  4, 5, 6,
-                                                  7, 8, 9}, 3, 3);
-    matrix needM = createMatrixFromArray((int[]) {2, 1, 3,
-                                                  5, 4, 6,
-                                                  8, 7, 9}, 3, 3);
-    insertionSortColsMatrixByColCriteria(readM, (int (*)(int *, int)) sumElementsArray);
+    matrix readM = createMatrixFromArray((int[]) {1, 0, 2,
+                                                  1, 0, 2,
+                                                  1, 0, 2}, 3, 3);
+    matrix needM = createMatrixFromArray((int[]) {0, 1, 2,
+                                                  0, 1, 2,
+                                                  0, 1, 2}, 3, 3);
+    insertionSortColsMatrixByColCriteria(readM, sumElementsArray);
     assert(twoMatricesEqual(readM, needM));
 
     freeMemMatrix(readM);
@@ -223,4 +223,4 @@ void test_matrix() {
     test_transposeSquareMatrix();
     test_getMinValuePos();
     test_getMaxValuePos();
-} //100
+}
