@@ -52,29 +52,34 @@ void test_sortRowsByMaxElements() {
     test_sortRowsByMaxElements_standart();
 }
 
-void test_task_third() {
+//third
+void test_sortColsByMinElements_standart() {
+    matrix readM = createMatrixFromArray((int[]) {3, 5, 2, 4, 3, 3,
+                                                     2, 5, 1, 8, 2, 7,
+                                                     6, 1, 4, 4, 8, 3}, 3, 6);
+    matrix needM = createMatrixFromArray((int[]) {5, 2, 3, 3, 3, 4,
+                                                     5, 1, 2, 2, 7, 8,
+                                                     1, 4, 6, 8, 3, 4}, 3, 6);
+    sortColsByMinElements(readM);
+    assert(twoMatricesEqual(readM, needM));
 
+    freeMemMatrix(readM);
+    freeMemMatrix(needM);
 }
-void test_task_fourth() {
+void test_sortColsByMinElements() {
+    test_sortColsByMinElements_standart();
+}
 
-}
-void test_task_fifth() {
-
-}
-void test_task_sixth() {
-
-}
-void test_task_seventh() {
-
-}
-void test_task_eighth() {
-
-}
+void test_task_fourth() {}
+void test_task_fifth() {}
+void test_task_sixth() {}
+void test_task_seventh() {}
+void test_task_eighth() {}
 
 void test_matrixTasks() {
     test_swapRowsWithMaxAndMinValue();
-    test_sortRowsByMaxElements();
-    test_task_third();
+    //test_sortRowsByMaxElements();
+    //test_sortColsByMinElements();
     test_task_fourth();
     test_task_fifth();
     test_task_sixth();
