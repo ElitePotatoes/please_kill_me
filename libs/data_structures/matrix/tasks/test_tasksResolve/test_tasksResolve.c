@@ -70,7 +70,24 @@ void test_sortColsByMinElements() {
     test_sortColsByMinElements_standart();
 }
 
-void test_task_fourth() {}
+//fourth
+void test_getSquareOfMatrixIfSymmetric_standart() {
+    matrix readM = createMatrixFromArray((int[]) {1, 2, 3,
+                                                  2, 1, 4,
+                                                  3, 4, 1}, 3, 3);
+    matrix needM = createMatrixFromArray((int[]) {11, 16, 14,
+                                                  12, 21, 14,
+                                                  13, 14, 26}, 3, 3);
+    getSquareOfMatrixIfSymmetric(&readM);
+    assert(twoMatricesEqual(readM, needM));
+
+    freeMemMatrix(readM);
+    freeMemMatrix(needM);
+}
+void test_getSquareOfMatrixIfSymmetric() {
+    test_getSquareOfMatrixIfSymmetric_standart();
+}
+
 void test_task_fifth() {}
 void test_task_sixth() {}
 void test_task_seventh() {}
@@ -80,7 +97,7 @@ void test_matrixTasks() {
     test_swapRowsWithMaxAndMinValue();
     //test_sortRowsByMaxElements();
     //test_sortColsByMinElements();
-    test_task_fourth();
+    //test_getSquareOfMatrixIfSymmetric();
     test_task_fifth();
     test_task_sixth();
     test_task_seventh();
