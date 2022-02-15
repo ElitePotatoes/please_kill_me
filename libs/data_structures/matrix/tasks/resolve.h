@@ -21,11 +21,11 @@ void sortColsByMinElements(matrix m);
 //возвращает матрицу, полученную перемножением матриц m1 и m2.
 matrix mulMatrices(matrix m1, matrix m2);
 
-//возводит в квадрат все элементы матрицы m, если она симметрична.
+//возводит в квадрат матрицу m, если она симметрична.
 void getSquareOfMatrixIfSymmetric(matrix *m);
 
 //возвращает сумму элементов массива а размера size.
-long long getSum(const long long a[], size_t size);
+long long getSum(const int a[], size_t size);
 
 //возвращает значение 'истина', если в массиве а размера size нет одинаковых элементов, иначе - 'ложь'.
 bool isUnique(const int a[], size_t size);
@@ -35,5 +35,11 @@ void transposeIfMatrixHasNotEqualSumOfRows(matrix m);
 
 //возвращает значение 'истина', если матрицы m1 и m2 взаимнообратные.
 bool isMutuallyInverseMatrices(matrix m1, matrix m2);
+
+//возвращает максимальное значение элемента в диагонали, начинающиеся с индексов indexRow и indexCol, матрицы m.
+int getMaxDiagonalElement(matrix m, size_t indexRow, size_t indexCol);
+
+//возвращает сумму максимальных элементов всех псевдодиагоналей данной матрицы m.
+long long findSumOfMaxesOfPseudoDiagonal(matrix m);
 
 #endif //MAIN_C_RESOLVE_H

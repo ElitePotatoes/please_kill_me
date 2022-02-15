@@ -66,7 +66,7 @@ void getSquareOfMatrixIfSymmetric(matrix *m) {
 
 /********************************************************* 5 **********************************************************/
 
-long long getSum(const long long a[], const size_t size) {
+long long getSum(const int a[], const size_t size) {
     long long sum = 0;
     for (size_t i = 0; i < size; ++i)
         sum += a[i];
@@ -100,8 +100,24 @@ bool isMutuallyInverseMatrices(matrix m1, matrix m2) {
 
 /********************************************************* 7 **********************************************************/
 
-int max(int a, int b) {}
-long long findSumOfMaxesOfPseudoDiagonal(matrix m) {}
+int getMaxDiagonalElement(matrix m, size_t indexRow, size_t indexCol) {
+    int maxElement = m.values[indexRow][indexCol];
+    while (indexRow < m.nRows && indexCol < m.nCols)
+        maxElement = max2(maxElement, m.values[indexRow++][indexCol++]);
+
+    return maxElement;
+}
+
+long long findSumOfMaxesOfPseudoDiagonal(matrix m) {
+    long long sumElements = 0;
+    for (size_t l = 1; l < m.nRows; ++l)
+        sumElements += getMaxDiagonalElement(m, l, 0);
+
+    for (size_t h = 1; h < m.nCols; ++h)
+        sumElements += getMaxDiagonalElement(m, 0, h);
+
+    return sumElements;
+}
 
 /********************************************************* 8 **********************************************************/
 
