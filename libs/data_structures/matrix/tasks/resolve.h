@@ -33,4 +33,7 @@ bool isUnique(const int a[], size_t size);
 //транспонирует матрицу m, если среди сумм элементов строк матрицы нет равных.
 void transposeIfMatrixHasNotEqualSumOfRows(matrix m);
 
+//возвращает значение 'истина', если матрицы m1 и m2 взаимнообратные.
+bool isMutuallyInverseMatrices(matrix m1, matrix m2);
+
 #endif //MAIN_C_RESOLVE_H

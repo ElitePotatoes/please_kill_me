@@ -94,7 +94,9 @@ void transposeIfMatrixHasNotEqualSumOfRows(matrix m) {
 
 /********************************************************* 6 **********************************************************/
 
-bool isMutuallyInverseMatrices(matrix m1, matrix m2) {}
+bool isMutuallyInverseMatrices(matrix m1, matrix m2) {
+    return isEMatrix(mulMatrices(m1, m2));
+}
 
 /********************************************************* 7 **********************************************************/
 
