@@ -1,6 +1,7 @@
 #include "resolve.h"
 
-//first
+/********************************************************* 1 **********************************************************/
+
 void swapRowsWithMaxAndMinValue(matrix m) {
     position minIndex = getMinValuePos(m);
     position maxIndex = getMaxValuePos(m);
@@ -8,7 +9,8 @@ void swapRowsWithMaxAndMinValue(matrix m) {
         swapRows(m, minIndex.rowIndex, maxIndex.rowIndex);
 }
 
-//second
+/********************************************************* 2 **********************************************************/
+
 int getMax(const int a[], const size_t size) {
     int maxValue = a[0];
     for (size_t i = 1; i < size; ++i)
@@ -17,11 +19,13 @@ int getMax(const int a[], const size_t size) {
 
     return maxValue;
 }
+
 void sortRowsByMaxElements(matrix m) {
     insertionSortRowsMatrixByRowCriteria(m, getMax);
 }
 
-//third
+/********************************************************* 3 **********************************************************/
+
 int getMin(const int a[], const size_t size) {
     int minValue = a[0];
     for (size_t i = 1; i < size; ++i)
@@ -30,15 +34,18 @@ int getMin(const int a[], const size_t size) {
 
     return minValue;
 }
+
 void sortColsByMinElements(matrix m) {
     insertionSortColsMatrixByColCriteria(m, getMin);
 }
 
-//fourth
+/********************************************************* 4 **********************************************************/
+
 void impossibleMultiplication() {
     fprintf(stderr, "multiplication isn't possible");
     exit(1);
 }
+
 matrix mulMatrices(matrix const m1, matrix const m2) {
     if (m1.nCols != m2.nRows)
         impossibleMultiplication();
@@ -51,12 +58,49 @@ matrix mulMatrices(matrix const m1, matrix const m2) {
 
     return m3;
 }
+
 void getSquareOfMatrixIfSymmetric(matrix *m) {
     if (isSymmetricMatrix(*m))
         *m = mulMatrices(*m, *m);
 }
 
-bool task_fifth(matrix m) {}
-bool task_sixth(matrix m1, matrix m2) {}
-int task_seventh(matrix m) {}
-int task_eighth(matrix m) {}
+/********************************************************* 5 **********************************************************/
+
+long long getSum(const long long a[], const size_t size) {
+    long long sum = 0;
+    for (size_t i = 0; i < size; ++i)
+        sum += a[i];
+
+    return sum;
+}
+
+bool isUnique(const int a[], const size_t size) {
+    for (size_t i = 0; i < size; ++i)
+        for (size_t j = i; j < size; ++j)
+            if (a[i] == a[j])
+                return false;
+
+    return true;
+}
+
+void transposeIfMatrixHasNotEqualSumOfRows(matrix m) {
+    int criteriaArray[m.nRows];
+    for (size_t i = 0; i < m.nRows; ++i)
+        criteriaArray[i] = getSum(m.values[i], m.nCols);
+
+    if (isUnique(criteriaArray, m.nRows))
+        transposeSquareMatrix(m);
+}
+
+/********************************************************* 6 **********************************************************/
+
+bool isMutuallyInverseMatrices(matrix m1, matrix m2) {}
+
+/********************************************************* 7 **********************************************************/
+
+int max(int a, int b) {}
+long long findSumOfMaxesOfPseudoDiagonal(matrix m) {}
+
+/********************************************************* 8 **********************************************************/
+
+int getMinInArea(matrix m) {}
