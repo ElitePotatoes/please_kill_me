@@ -52,9 +52,11 @@ matrix mulMatrices(matrix const m1, matrix const m2) {
 
     matrix m3 = getMemMatrix(m1.nRows, m2.nCols);
     for (size_t i = 0; i < m1.nRows; ++i)
-        for (size_t j = 0; j < m2.nCols; ++j)
+        for (size_t j = 0; j < m2.nCols; ++j) {
+            m3.values[i][j] = 0;
             for (size_t k = 0; k < m1.nCols; ++k)
                 m3.values[i][j] += m1.values[i][k] * m2.values[k][j];
+        }
 
     return m3;
 }
@@ -76,7 +78,7 @@ long long getSum(const int a[], const size_t size) {
 
 bool isUnique(const int a[], const size_t size) {
     for (size_t i = 0; i < size; ++i)
-        for (size_t j = i; j < size; ++j)
+        for (size_t j = i + 1; j < size - 1; ++j)
             if (a[i] == a[j])
                 return false;
 
@@ -94,13 +96,13 @@ void transposeIfMatrixHasNotEqualSumOfRows(matrix m) {
 
 /********************************************************* 6 **********************************************************/
 
-bool isMutuallyInverseMatrices(matrix m1, matrix m2) {
+bool isMutuallyInverseMatrices(matrix const m1, matrix const m2) {
     return isEMatrix(mulMatrices(m1, m2));
 }
 
 /********************************************************* 7 **********************************************************/
 
-int getMaxDiagonalElement(matrix m, size_t indexRow, size_t indexCol) {
+int getMaxDiagonalElement(matrix const m, size_t indexRow, size_t indexCol) {
     int maxElement = m.values[indexRow][indexCol];
     while (indexRow < m.nRows && indexCol < m.nCols)
         maxElement = max2(maxElement, m.values[indexRow++][indexCol++]);
@@ -108,7 +110,7 @@ int getMaxDiagonalElement(matrix m, size_t indexRow, size_t indexCol) {
     return maxElement;
 }
 
-long long findSumOfMaxesOfPseudoDiagonal(matrix m) {
+long long findSumOfMaxesOfPseudoDiagonal(matrix const m) {
     long long sumElements = 0;
     for (size_t l = 1; l < m.nRows; ++l)
         sumElements += getMaxDiagonalElement(m, l, 0);
@@ -121,4 +123,5 @@ long long findSumOfMaxesOfPseudoDiagonal(matrix m) {
 
 /********************************************************* 8 **********************************************************/
 
-int getMinInArea(matrix m) {}
+int getMinInArea(matrix const m) {
+}

@@ -42,4 +42,7 @@ int getMaxDiagonalElement(matrix m, size_t indexRow, size_t indexCol);
 //возвращает сумму максимальных элементов всех псевдодиагоналей данной матрицы m.
 long long findSumOfMaxesOfPseudoDiagonal(matrix m);
 
+//возвращает минимальное значенита элемент матрицы m в области, образованной пирамидой выше максимального элемента.
+int getMinInArea(matrix m);
+
 #endif //MAIN_C_RESOLVE_H
