@@ -87,35 +87,28 @@ void insertionSortRowsMatrixByRowCriteria(matrix m, int (*criteria)(int *, int))
     for (size_t i = 0; i < m.nRows; ++i)
         criteriaArray[i] = criteria(m.values[i], m.nCols);
 
-    for (size_t i = 0; i < m.nRows; ++i) {
-        size_t maxIndex = i;
-        for (size_t j = i; j < m.nRows; j++)
-            if (criteriaArray[j] < criteriaArray[maxIndex])
-                maxIndex = j;
-
-        swapVoid(&criteriaArray[maxIndex], &criteriaArray[i], sizeof(int));
-        swapRows(m, i, maxIndex);
-    }
+    for (size_t i = 1; i < m.nRows; ++i)
+        for (size_t j = i; j > 0 && criteriaArray[j - 1] > criteriaArray[j]; --j) {
+            swapVoid(&criteriaArray[j - 1], &criteriaArray[j], sizeof(int));
+            swapRows(m, j, j - 1);
+        }
 }
 
 void insertionSortColsMatrixByColCriteria(matrix m, int (*criteria)(int *, int)) {
     int criteriaArray[m.nCols];
-    int column[m.nRows];
-    for (size_t i = 0; i < m.nCols; ++i) {
-        for (size_t j = 0; i < m.nRows; ++i)
-            column[i] = m.values[i][j];
+    for (size_t j = 0; j < m.nCols; ++j) {
+        int colsElements[m.nRows];
+        for (size_t i = 0; i < m.nRows; ++i)
+            colsElements[i] = m.values[i][j];
 
-        criteriaArray[i] = criteria(column, m.nRows);
+        criteriaArray[j] = criteria(colsElements, m.nRows);
     }
 
-    for (size_t i = 0; i < m.nCols; ++i) {
-        size_t maxIndex = i;
-        for (size_t j = i; j < m.nCols; j++)
-            if (criteriaArray[j] > criteriaArray[maxIndex])
-                maxIndex = j;
-
-        swapVoid(&criteriaArray[maxIndex], &criteriaArray[i], sizeof(int));
-        swapColumns(m, i, maxIndex);
+    for (size_t i = 1; i < m.nCols; ++i) {
+        for (size_t j = i; j > 0 && criteriaArray[j - 1] > criteriaArray[j]; --j) {
+            swapVoid(&criteriaArray[j - 1], &criteriaArray[j], sizeof(int));
+            swapColumns(m, j, j - 1);
+        }
     }
 }
 

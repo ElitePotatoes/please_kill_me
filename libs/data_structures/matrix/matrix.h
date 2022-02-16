@@ -4,6 +4,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
+#include <memory.h>
+#include <assert.h>
 
 #include "C:/Users/elite/CLionProjects/main/libs/algorithms/algorithm.h"
 #include "C:/Users/elite/CLionProjects/main/libs/algorithms/array/array.h"
