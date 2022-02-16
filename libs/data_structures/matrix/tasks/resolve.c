@@ -124,4 +124,40 @@ long long findSumOfMaxesOfPseudoDiagonal(matrix const m) {
 /********************************************************* 8 **********************************************************/
 
 int getMinInArea(matrix const m) {
+    position leftElement = getMaxValuePos(m);
+    position rightElement = leftElement;
+
+    int minElement = m.values[leftElement.rowIndex][leftElement.colIndex];
+    if (leftElement.rowIndex == 0)
+        return minElement;
+
+    int subArr[10];
+    int sizeSubArr = 1;
+    while (leftElement.rowIndex >= 0 && rightElement.rowIndex <= m.nCols) {
+        if (leftElement.colIndex == -1) {
+            leftElement.colIndex++;
+            sizeSubArr--;
+        }
+
+        if (rightElement.colIndex == m.nCols) {
+            rightElement.colIndex--;
+            sizeSubArr--;
+        }
+
+        int i = 0;
+        while (i < sizeSubArr) {
+            subArr[i] = (m).values[leftElement.rowIndex][leftElement.colIndex + i];
+            i++;
+        }
+
+        minElement = getMin(subArr, sizeSubArr);
+
+        rightElement.rowIndex--;
+        rightElement.colIndex++;
+        leftElement.rowIndex--;
+        leftElement.colIndex--;
+        sizeSubArr += 2;
+    }
+
+    return minElement;
 }

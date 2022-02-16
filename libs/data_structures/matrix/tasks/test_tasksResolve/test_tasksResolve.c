@@ -168,7 +168,15 @@ void test_getMinInArea_standart2() {
     matrix readM = createMatrixFromArray((int []) {6, 8, 9, 2,
                                                       7, 12, 3, 4,
                                                       10, 11, 5, 1}, 3, 4);
-    assert(getMinInArea(readM) == 5);
+    assert(getMinInArea(readM) == 6);
+
+    freeMemMatrix(readM);
+}
+void test_getMinInArea_standart3() {
+    matrix readM = createMatrixFromArray((int []) {10, 7, 5, 0,
+                                                   3, 11, 8, 9,
+                                                   4, 1, 12, 2}, 3, 4);
+    assert(getMinInArea(readM) == 0);
 
     freeMemMatrix(readM);
 }
@@ -183,6 +191,7 @@ void test_getMinInArea_minIndex00() {
 void test_getMinInArea() {
     test_getMinInArea_standart1();
     test_getMinInArea_standart2();
+    test_getMinInArea_standart3();
     test_getMinInArea_minIndex00();
 }
 
