@@ -58,6 +58,7 @@ void test_sortColsByMinElements_standart() {
                                                      5, 1, 2, 2, 7, 8,
                                                      1, 4, 6, 8, 3, 4}, 3, 6);
     sortColsByMinElements(readM);
+    outputMatrix(readM);
     assert(twoMatricesEqual(readM, needM));
 
     freeMemMatrix(readM);
@@ -182,8 +183,8 @@ void test_getMinInArea_standart3() {
 }
 void test_getMinInArea_minIndex00() {
     matrix readM = createMatrixFromArray((int []) {30, 8, 9, 2,
-                                                   7, 12, 3, 4,
-                                                   10, 11, 5, 1}, 3, 4);
+                                                      7, 12, 3, 4,
+                                                     10, 11, 5, 1}, 3, 4);
     assert(getMinInArea(readM) == 30);
 
     freeMemMatrix(readM);

@@ -3,7 +3,7 @@
 #include <assert.h>
 
 #include "array.h"
-#include "C:\Users\elite\CLionProjects\Lab\libs\algorithms\4a\4a.h"
+#include "C:\Users\elite\CLionProjects\main\libs\algorithms\algorithm.h"
 
 void inputArray(int a[], const size_t n) {
     for (size_t i = 0; i < n; i++)
@@ -185,4 +185,39 @@ int compare_ints(const void *a, const void *b) {
         return 1;
 
     return 0;
+}
+
+int getMax(const int a[], const size_t size) {
+    int maxValue = a[0];
+    for (size_t i = 1; i < size; ++i)
+        if (a[i] > maxValue)
+            maxValue = a[i];
+
+    return maxValue;
+}
+
+int getMin(const int a[], const size_t size) {
+    int minValue = a[0];
+    for (size_t i = 1; i < size; ++i)
+        if (a[i] < minValue)
+            minValue = a[i];
+
+    return minValue;
+}
+
+long long getSum(const int a[], const size_t size) {
+    long long sum = 0;
+    for (size_t i = 0; i < size; ++i)
+        sum += a[i];
+
+    return sum;
+}
+
+bool isUnique(const int a[], const size_t size) {
+    for (size_t i = 0; i < size; ++i)
+        for (size_t j = i + 1; j < size - 1; ++j)
+            if (a[i] == a[j])
+                return false;
+
+    return true;
 }

@@ -37,7 +37,7 @@ void test_insertionSortRowsMatrixByRowCriteria_SumArrays() {
     matrix needM = createMatrixFromArray((int[]) {0, 0, 0,
                                                   1, 1, 1,
                                                   2, 2, 2}, 3, 3);
-    insertionSortRowsMatrixByRowCriteria(readM, sumElementsArray);
+    insertionSortRowsMatrixByRowCriteria(readM, getSum);
     assert(twoMatricesEqual(readM, needM));
 
     freeMemMatrix(readM);
@@ -54,7 +54,7 @@ void test_insertionSortColsMatrixByColCriteria_SumArrays() {
     matrix needM = createMatrixFromArray((int[]) {0, 1, 2,
                                                   0, 1, 2,
                                                   0, 1, 2}, 3, 3);
-    insertionSortColsMatrixByColCriteria(readM, sumElementsArray);
+    insertionSortColsMatrixByColCriteria(readM, getSum);
     assert(twoMatricesEqual(readM, needM));
 
     freeMemMatrix(readM);

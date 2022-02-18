@@ -10,6 +10,11 @@ void badSquareMatrix() {
     exit(1);
 }
 
+void impossibleMultiplication() {
+    fprintf(stderr, "multiplication isn't possible");
+    exit(1);
+}
+
 matrix getMemMatrix(const int nRows, const int nCols) {
     int **values = (int **) malloc(sizeof(int *) * nRows);
     for (size_t i = 0; i < nRows; ++i)
@@ -83,33 +88,39 @@ void swapColumns(matrix m, const int j1, const int j2) {
 }
 
 void insertionSortRowsMatrixByRowCriteria(matrix m, int (*criteria)(int *, int)) {
-    int criteriaArray[m.nRows];
+    int *criteriaArray = (int *) malloc(sizeof(int) * m.nRows);
     for (size_t i = 0; i < m.nRows; ++i)
         criteriaArray[i] = criteria(m.values[i], m.nCols);
 
-    for (size_t i = 1; i < m.nRows; ++i)
-        for (size_t j = i; j > 0 && criteriaArray[j - 1] > criteriaArray[j]; --j) {
-            swapVoid(&criteriaArray[j - 1], &criteriaArray[j], sizeof(int));
-            swapRows(m, j, j - 1);
-        }
+    for (size_t i = 0; i < m.nRows - 1; ++i)
+        for (size_t j = i + 1; j < m.nRows; ++j)
+            if (criteriaArray[i] > criteriaArray[j]) {
+                swapRows(m, i, j);
+                swapVoid(&criteriaArray[i], &criteriaArray[j], sizeof(int));
+            }
+
+    free(criteriaArray);
 }
 
 void insertionSortColsMatrixByColCriteria(matrix m, int (*criteria)(int *, int)) {
-    int criteriaArray[m.nCols];
+    int *criteriaArray = (int *) malloc(sizeof(int) * m.nCols);
+    int *colsElements = (int *) malloc(sizeof(int) * m.nRows);
     for (size_t j = 0; j < m.nCols; ++j) {
-        int colsElements[m.nRows];
         for (size_t i = 0; i < m.nRows; ++i)
             colsElements[i] = m.values[i][j];
 
         criteriaArray[j] = criteria(colsElements, m.nRows);
     }
 
-    for (size_t i = 1; i < m.nCols; ++i) {
-        for (size_t j = i; j > 0 && criteriaArray[j - 1] > criteriaArray[j]; --j) {
-            swapVoid(&criteriaArray[j - 1], &criteriaArray[j], sizeof(int));
-            swapColumns(m, j, j - 1);
-        }
-    }
+    for (size_t i = 0; i < m.nCols - 1; ++i)
+        for (size_t j = i + 1; j < m.nCols; ++j)
+            if (criteriaArray[i] > criteriaArray[j]) {
+                swapColumns(m, i, j);
+                swapVoid(&criteriaArray[i], &criteriaArray[j], sizeof(int));
+            }
+
+    free(criteriaArray);
+    free(colsElements);
 }
 
 bool isSquareMatrix(matrix const m) {
@@ -134,7 +145,7 @@ bool isEMatrix(matrix const m) {
 
     for (size_t i = 0; i < m.nRows; ++i)
         for (size_t j = 0; j < m.nCols; ++j)
-            if ((i == j && m.values[i][j] != 1) || (i != j && m.values[i][j] != 0))
+            if (i == j && m.values[i][j] != 1 || i != j && m.values[i][j] != 0)
                 return false;
 
     return true;
@@ -145,7 +156,7 @@ bool isSymmetricMatrix(matrix const m) {
         return false;
 
     for (size_t i = 0; i < m.nRows; ++i)
-        for (size_t j = 0; j < m.nCols; ++j)
+        for (size_t j = i + 1; j < m.nCols; ++j)
             if (m.values[i][j] != m.values[j][i])
                 return false;
 
@@ -206,4 +217,115 @@ matrix *createArrayOfMatrixFromArray(const int *values, const size_t nMatrices, 
                 ms[k].values[i][j] = values[l++];
 
     return ms;
+}
+
+void swapRowsWithMaxAndMinValue(matrix m) {
+    position minIndex = getMinValuePos(m);
+    position maxIndex = getMaxValuePos(m);
+    if (minIndex.rowIndex != maxIndex.rowIndex)
+        swapRows(m, minIndex.rowIndex, maxIndex.rowIndex);
+}
+
+void sortRowsByMaxElements(matrix m) {
+    insertionSortRowsMatrixByRowCriteria(m, getMax);
+}
+
+void sortColsByMinElements(matrix m) {
+    insertionSortColsMatrixByColCriteria(m, getMin);
+}
+
+matrix mulMatrices(matrix const m1, matrix const m2) {
+    if (m1.nCols != m2.nRows)
+        impossibleMultiplication();
+
+    matrix m3 = getMemMatrix(m1.nRows, m2.nCols);
+    for (size_t i = 0; i < m1.nRows; ++i)
+        for (size_t j = 0; j < m2.nCols; ++j) {
+            m3.values[i][j] = 0;
+            for (size_t k = 0; k < m1.nCols; ++k)
+                m3.values[i][j] += m1.values[i][k] * m2.values[k][j];
+        }
+
+    return m3;
+}
+
+void getSquareOfMatrixIfSymmetric(matrix *m) {
+    if (isSymmetricMatrix(*m))
+        *m = mulMatrices(*m, *m);
+}
+
+void transposeIfMatrixHasNotEqualSumOfRows(matrix m) {
+    int criteriaArray[m.nRows];
+    for (size_t i = 0; i < m.nRows; ++i)
+        criteriaArray[i] = getSum(m.values[i], m.nCols);
+
+    if (isUnique(criteriaArray, m.nRows))
+        transposeSquareMatrix(m);
+}
+
+bool isMutuallyInverseMatrices(matrix const m1, matrix const m2) {
+    matrix m3 = mulMatrices(m1,m2);
+    bool result = isEMatrix(m3);
+
+    freeMemMatrix(m3);
+
+    return result;
+}
+
+int getMaxDiagonalElement(matrix const m, size_t indexRow, size_t indexCol) {
+    int maxElement = m.values[indexRow][indexCol];
+    while (indexRow < m.nRows && indexCol < m.nCols)
+        maxElement = max2(maxElement, m.values[indexRow++][indexCol++]);
+
+    return maxElement;
+}
+
+long long findSumOfMaxesOfPseudoDiagonal(matrix const m) {
+    long long sumElements = 0;
+    for (size_t l = 1; l < m.nRows; ++l)
+        sumElements += getMaxDiagonalElement(m, l, 0);
+
+    for (size_t h = 1; h < m.nCols; ++h)
+        sumElements += getMaxDiagonalElement(m, 0, h);
+
+    return sumElements;
+}
+
+int getMinInArea(matrix const m) {
+    position leftElement = getMaxValuePos(m);
+    position rightElement = leftElement;
+
+    int minElement = m.values[leftElement.rowIndex][leftElement.colIndex];
+    if (leftElement.rowIndex == 0)
+        return minElement;
+
+    int subArr[10];
+    int sizeSubArr = 1;
+    while (leftElement.rowIndex >= 0 && rightElement.rowIndex <= m.nCols) {
+        if (leftElement.colIndex == -1) {
+            leftElement.colIndex++;
+            sizeSubArr--;
+        }
+
+        if (rightElement.colIndex == m.nCols) {
+            rightElement.colIndex--;
+            sizeSubArr--;
+        }
+
+        int i = 0;
+        while (i < sizeSubArr) {
+            subArr[i] = (m).values[leftElement.rowIndex][leftElement.colIndex + i];
+            i++;
+        }
+
+        minElement = getMin(subArr, sizeSubArr);
+
+        rightElement.rowIndex--;
+        rightElement.colIndex++;
+        leftElement.rowIndex--;
+        leftElement.colIndex--;
+        sizeSubArr += 2;
+    }
+
+    return minElement;
 }

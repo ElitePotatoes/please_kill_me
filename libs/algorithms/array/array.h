@@ -2,6 +2,7 @@
 #define INC_ARRAY_H
 
 #include <stddef.h>
+#include <stdbool.h>
 
 //ввод массива a размера size.
 void inputArray(int a[], size_t size);
@@ -55,9 +56,21 @@ void increasingSort(int a[], size_t size);
 void decreasingSort(int a[], size_t size);
 
 //сортировка вставками.
-void insertionSort(int *a, size_t size);
+void insertionSort(int a[], size_t size);
 
 //компановщик переменных типа int для qsort.
 int compare_ints(const void *a, const void *b);
+
+//возвращает минимальное значение в массиве а размера size.
+int getMin(const int a[], size_t size);
+
+//возвращает максимальное значение в массиве а размера size.
+int getMax(const int a[], size_t size);
+
+//возвращает сумму элементов массива а размера size.
+long long getSum(const int a[], size_t size);
+
+//возвращает значение 'истина', если в массиве а размера size нет одинаковых элементов, иначе - 'ложь'.
+bool isUnique(const int a[], size_t size);
 
 #endif //INC_ARRAY_H

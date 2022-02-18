@@ -85,4 +85,34 @@ matrix createMatrixFromArray(const int *a, size_t nRows, size_t nCols);
 //построенных из элементов массива a.
 matrix *createArrayOfMatrixFromArray(const int *values, size_t nMatrices, size_t nRows, size_t nCols);
 
+//обменивает ряд матрицы m, имеющие минимальное и максимальное значения элементов.
+void swapRowsWithMaxAndMinValue(matrix m);
+
+//сортирует ряды матрицы m по неубыванию наибольших элементов строк.
+void sortRowsByMaxElements(matrix m);
+
+//сортирует столбцы матрицы m по неубыванию минимальных элементов столбцов.
+void sortColsByMinElements(matrix m);
+
+//возвращает матрицу, полученную перемножением матриц m1 и m2.
+matrix mulMatrices(matrix m1, matrix m2);
+
+//возводит в квадрат матрицу m, если она симметрична.
+void getSquareOfMatrixIfSymmetric(matrix *m);
+
+//транспонирует матрицу m, если среди сумм элементов строк матрицы нет равных.
+void transposeIfMatrixHasNotEqualSumOfRows(matrix m);
+
+//возвращает значение 'истина', если матрицы m1 и m2 взаимнообратные, иначе - 'ложь'.
+bool isMutuallyInverseMatrices(matrix m1, matrix m2);
+
+//возвращает максимальное значение элемента в диагонали, начинающиеся с индексов indexRow и indexCol, матрицы m.
+int getMaxDiagonalElement(matrix m, size_t indexRow, size_t indexCol);
+
+//возвращает сумму максимальных элементов всех псевдодиагоналей данной матрицы m.
+long long findSumOfMaxesOfPseudoDiagonal(matrix m);
+
+//возвращает минимальное значенита элемент матрицы m в области, образованной пирамидой выше максимального элемента.
+int getMinInArea(matrix m);
+
 #endif //MAIN_C_MATRIX_H
