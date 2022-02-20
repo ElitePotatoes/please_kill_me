@@ -30,7 +30,16 @@ bool isNonDescendingSorted(const int a[], size_t size);
 //возвращает значение 'истина', если строки упорядочены по возрастанию элементов, иначе - 'ложь'.
 bool hasAllNonDescendingRows(matrix m);
 
-//возвращает количество матриц, строки которых упорядочены по возрастанию элементов, в массиве ms размера nMatrix.
+//возвращает количество матриц, строки которых упорядочены по возрастанию элементов, в массиве матриц ms размера nMatrix.
 int countNonDescendingRowsMatrices(matrix ms[], size_t nMatrix);
+
+//возвращает значение схождений элементов массива a размера size со значением value.
+int countValues(const int a[], size_t size, int value);
+
+//возвращает количество нулевых строчек матрицы m.
+int countZeroRows(matrix m);
+
+//выводит матрицы, имеющие наибольшее число нулевых строк, в массиве матриц ms размера nMatrix.
+void printMatrixWithMaxZeroRows(matrix ms[], size_t nMatrix);
 
 #endif //MAIN_C_RESOLVE_H
