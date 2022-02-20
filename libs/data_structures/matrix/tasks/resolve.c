@@ -62,3 +62,34 @@ int countEqClassesByRowsSum(matrix const m) {
 
     return countNUnique(criteriaArray, m.nRows);
 }
+
+/******************************************************** 11 **********************************************************/
+
+int getNSpecialElement(matrix const m) {
+    long long criteriaArray[m.nCols];
+    int subArray[m.nRows];
+    for (size_t j = 0; j < m.nCols; ++j) {
+        for (size_t i = 0; i < m.nRows; ++i)
+            subArray[i] = m.values[i][j];
+
+        criteriaArray[j] = getSum(subArray, m.nRows);
+    }
+
+    int counter = 0;
+    for (size_t j = 0; j < m.nCols; ++j)
+        for (size_t i = 0; i < m.nRows; ++i)
+            if (criteriaArray[j] - m.values[i][j] < criteriaArray[j])
+                counter++;
+
+    return counter;
+}
+
+/******************************************************** 12 **********************************************************/
+
+position getLeftMin(matrix const m) {
+
+}
+
+void swapPenultimateRow(matrix m, const size_t n) {
+
+}

@@ -18,4 +18,10 @@ int countNUnique(long long a[], size_t size);
 //возвращает количество классов эквивалентных строк матрицы m;
 int countEqClassesByRowsSum(matrix m);
 
+//возвращает количество элементов матрицы m, если они больше суммы остальных элементов своего столбца.
+int getNSpecialElement(matrix m);
+
+//заменяет предпоследнюю строку матрицы м первым из столбцов, в котором находится минимальный элемент матрицы.
+void swapPenultimateRow(matrix m, size_t n);
+
 #endif //MAIN_C_RESOLVE_H
