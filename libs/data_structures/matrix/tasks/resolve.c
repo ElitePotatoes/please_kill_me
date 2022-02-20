@@ -104,3 +104,32 @@ void swapPenultimateRow(matrix m) {
     for (size_t j = 0; j < m.nCols; ++j)
         m.values[m.nRows - 2][j] = subArray[j];
 }
+
+/******************************************************** 13 **********************************************************/
+
+bool isNonDescendingSorted(const int a[], const size_t size) {
+    for (size_t i = 1; i < size; ++i)
+        if (a[i] < a[i - 1])
+            return false;
+
+    return true;
+}
+
+bool hasAllNonDescendingRows(matrix const m) {
+    for (size_t i = 0; i < m.nRows; ++i)
+        if (!isNonDescendingSorted(m.values[i], m.nCols))
+            return false;
+
+    return true;
+}
+
+int countNonDescendingRowsMatrices(matrix ms[], const size_t nMatrix) {
+    int counter = 0;
+    for (size_t i = 0; i < nMatrix; ++i)
+        counter += hasAllNonDescendingRows(ms[i]);
+
+    return counter;
+}
+
+/******************************************************** 14 **********************************************************/
+
