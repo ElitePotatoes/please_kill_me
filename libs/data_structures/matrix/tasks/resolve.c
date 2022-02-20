@@ -157,9 +157,33 @@ void printMatrixWithMaxZeroRows(matrix ms[], const size_t nMatrix) {
         matrixWithZeroRows[i] = countZeroRows(ms[i]);
 
     int maxZero = getMax(matrixWithZeroRows, nMatrix);
-    for (int i = 0; i < nMatrix; ++i)
+    for (size_t i = 0; i < nMatrix; ++i)
         if (matrixWithZeroRows[i] == maxZero)
             outputMatrix(ms[i]);
 
     free(matrixWithZeroRows);
+}
+
+/******************************************************** 15 **********************************************************/
+
+int absoluteNorm(matrix const m) {
+    int norm = abs(m.values[0][0]);
+    for (size_t i = 0; i < m.nRows; ++i) {
+        int max = abs(getMax(m.values[i], m.nCols));
+        if (norm < max)
+            norm = max;
+    }
+
+    return norm;
+}
+
+void printMatricesWithMinNorm(matrix ms[], const size_t nMatrix) {
+    int normInMatrices[nMatrix];
+    for (size_t i = 0; i < nMatrix; ++i)
+        normInMatrices[i] = absoluteNorm(ms[i]);
+
+    int min = getMin(normInMatrices, nMatrix);
+    for (size_t i = 0; i < nMatrix; i++)
+        if (normInMatrices[i] == min)
+            outputMatrix(ms[i]);
 }
