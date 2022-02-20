@@ -11,4 +11,5 @@ add_library(data_structures
         point/point.c
         line/line.c
         circle/circle.c
-        fraction/fraction.c)
+        fraction/fraction.c
+        matrix/test_matrix/test_matrix.c)

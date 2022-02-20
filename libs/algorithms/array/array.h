@@ -58,8 +58,6 @@ void decreasingSort(int a[], size_t size);
 //сортировка вставками.
 void insertionSort(int a[], size_t size);
 
-//компановщик переменных типа int для qsort.
-int compare_ints(const void *a, const void *b);
 
 //возвращает минимальное значение в массиве а размера size.
 int getMin(const int a[], size_t size);
@@ -72,5 +70,24 @@ long long getSum(const int a[], size_t size);
 
 //возвращает значение 'истина', если в массиве а размера size нет одинаковых элементов, иначе - 'ложь'.
 bool isUnique(const int a[], size_t size);
+
+//возвращает расстаояние до начала координат массива a размера size.
+double getDistanceArray(const int a[], size_t size);
+
+//возвращает количество классов эквивалентных индексов массива a размера size.
+int countNUnique(long long a[], size_t size);
+
+//возвращает значение 'истина', если все элементы массива a размера size расположены по возрастанию, иначе - 'ложь'.
+bool isNonDescendingSorted(const int a[], size_t size);
+
+//возвращает значение схождений элементов массива a размера size со значением value.
+int countValues(const int a[], size_t size, int value);
+
+
+//компанатор переменных типа int для qsort.
+int compare_ints(const void *a, const void *b);
+
+//компанатор переменных типа long long для qsort.
+int cmp_long_long(const void *pa, const void *pb);
 
 #endif //INC_ARRAY_H

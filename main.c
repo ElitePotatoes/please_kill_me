@@ -10,14 +10,12 @@
 #include <memory.h>
 #include <assert.h>
 
-#include "libs/data_structures/matrix/tasks/test_tasksResolve/test_tasksResolve.h"
 #include "libs/data_structures/matrix/test_matrix/test_matrix.h"
 
 int main() {
     //SetConsoleOutputCP (CP_UTF8);
 
     test_matrix();
-    test_matrixTasks();
 
     return 0;
 }

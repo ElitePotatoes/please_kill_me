@@ -176,17 +176,6 @@ void insertionSort(int *a, const size_t size) {
     }
 }
 
-int compare_ints(const void *a, const void *b) {
-    int arg1 = *(const int *) a;
-    int arg2 = *(const int *) b;
-    if (arg1 < arg2)
-        return -1;
-    if (arg1 > arg2)
-        return 1;
-
-    return 0;
-}
-
 int getMax(const int a[], const size_t size) {
     int maxValue = a[0];
     for (size_t i = 1; i < size; ++i)
@@ -220,4 +209,58 @@ bool isUnique(const int a[], const size_t size) {
                 return false;
 
     return true;
+}
+
+int countNUnique(long long a[], const size_t size) {
+    qsort(a, size, sizeof(long long), cmp_long_long);
+
+    int counter = 1;
+    for (size_t i = 1; i < size; ++i)
+        if (a[i] != a[i - 1])
+            counter++;
+
+    return counter;
+}
+
+bool isNonDescendingSorted(const int a[], const size_t size) {
+    for (size_t i = 1; i < size; ++i)
+        if (a[i] < a[i - 1])
+            return false;
+
+    return true;
+}
+
+int countValues(const int a[], const size_t size, const int value) {
+    int counter = 0;
+    for (size_t i = 0; i < size; ++i)
+        if (a[i] == value)
+            counter++;
+
+    return counter;
+}
+
+
+int compare_ints(const void *a, const void *b) {
+    int arg1 = *(const int *) a;
+    int arg2 = *(const int *) b;
+    if (arg1 < arg2)
+        return -1;
+
+    if (arg1 > arg2)
+        return 1;
+
+    return 0;
+}
+
+int cmp_long_long(const void *pa, const void *pb) {
+    long long arg1 = *(const long long *) pa;
+    long long arg2 = *(const long long *) pb;
+
+    if (arg1 < arg2)
+        return -1;
+
+    if (arg1 > arg2)
+        return 1;
+
+    return 0;
 }

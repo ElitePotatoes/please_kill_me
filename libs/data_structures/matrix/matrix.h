@@ -115,4 +115,34 @@ long long findSumOfMaxesOfPseudoDiagonal(matrix m);
 //возвращает минимальное значенита элемент матрицы m в области, образованной пирамидой выше максимального элемента.
 int getMinInArea(matrix m);
 
+//сортирует строчки матрицы m по расстоянию от начала координат.
+void sortByDistance(matrix m);
+
+//возвращает количество классов эквивалентных строк матрицы m;
+int countEqClassesByRowsSum(matrix m);
+
+//возвращает количество элементов матрицы m, если они больше суммы остальных элементов своего столбца.
+int getNSpecialElement(matrix m);
+
+//заменяет предпоследнюю строку матрицы м первым из столбцов, в котором находится минимальный элемент матрицы.
+void swapPenultimateRow(matrix m);
+
+//возвращает значение 'истина', если строки упорядочены по возрастанию элементов, иначе - 'ложь'.
+bool hasAllNonDescendingRows(matrix m);
+
+//возвращает количество матриц, строки которых упорядочены по возрастанию элементов, из массива матриц ms размера nMatrix.
+int countNonDescendingRowsMatrices(matrix ms[], size_t nMatrix);
+
+//возвращает количество нулевых строчек матрицы m.
+int countZeroRows(matrix m);
+
+//выводит матрицы, имеющие наибольшее число нулевых строк, из массиве матриц ms размера nMatrix.
+void printMatrixWithMaxZeroRows(matrix ms[], size_t nMatrix);
+
+//возвращает максимум абсолютных величин элементов матрицы m.
+int absoluteNorm(matrix m);
+
+//выводит матрицы с наименьшей нормой из массива матриц ms размера nMatrix.
+void printMatricesWithMinNorm(matrix ms[], size_t nMatrix);
+
 #endif //MAIN_C_MATRIX_H
