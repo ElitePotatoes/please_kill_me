@@ -86,10 +86,21 @@ int getNSpecialElement(matrix const m) {
 
 /******************************************************** 12 **********************************************************/
 
-position getLeftMin(matrix const m) {
-
+void needNewSquare() {
+    fprintf(stderr, "Davai po novoi chert`");
+    exit(1);
 }
 
-void swapPenultimateRow(matrix m, const size_t n) {
+void swapPenultimateRow(matrix m) {
+    if (m.nRows < 2)
+        needNewSquare();
 
+    position min = getMinValuePos(m);
+
+    int subArray[m.nRows];
+    for (size_t i = 0; i < m.nRows; ++i)
+        subArray[i] = m.values[i][min.colIndex];
+
+    for (size_t j = 0; j < m.nCols; ++j)
+        m.values[m.nRows - 2][j] = subArray[j];
 }

@@ -22,6 +22,6 @@ int countEqClassesByRowsSum(matrix m);
 int getNSpecialElement(matrix m);
 
 //заменяет предпоследнюю строку матрицы м первым из столбцов, в котором находится минимальный элемент матрицы.
-void swapPenultimateRow(matrix m, size_t n);
+void swapPenultimateRow(matrix m);
 
 #endif //MAIN_C_RESOLVE_H
