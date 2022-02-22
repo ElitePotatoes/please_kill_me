@@ -277,59 +277,49 @@ bool isMutuallyInverseMatrices(matrix const m1, matrix const m2) {
     return result;
 }
 
-int getMaxDiagonalElement(matrix const m, size_t indexRow, size_t indexCol) {
-    int maxElement = m.values[indexRow][indexCol];
-    while (indexRow < m.nRows && indexCol < m.nCols)
-        maxElement = max2(maxElement, m.values[indexRow++][indexCol++]);
+long long findSumOfMaxesOfPseudoDiagonal(matrix const m) {
+    int size = m.nCols + m.nRows - 1;
+    int sumArray[size];
+    for (size_t i = 0; i < size; ++i)
+        sumArray[i] = 0;
 
-    return maxElement;
+    for (size_t i = 0; i < m.nRows; ++i) {
+        for (size_t j = 0; j < m.nCols; ++j) {
+            if (i == j)
+                continue;
+
+            sumArray[j - i + 2] = max2(sumArray[j - i + 2], m.values[i][j]);
+        }
+    }
+
+    return getSum(sumArray, size);
 }
 
-long long findSumOfMaxesOfPseudoDiagonal(matrix const m) {
-    long long sumElements = 0;
-    for (size_t l = 1; l < m.nRows; ++l)
-        sumElements += getMaxDiagonalElement(m, l, 0);
+int getMinInMatrixRow(matrix const m, const size_t rowIndex, const size_t leftPos, const size_t rightPos) {
+    int minElement = m.values[rowIndex][leftPos];
+    for (size_t j = leftPos + 1; j < rightPos; ++j)
+        minElement = min2(minElement, m.values[rowIndex][j]);
 
-    for (size_t h = 1; h < m.nCols; ++h)
-        sumElements += getMaxDiagonalElement(m, 0, h);
-
-    return sumElements;
+    return minElement;
 }
 
 int getMinInArea(matrix const m) {
-    position leftElement = getMaxValuePos(m);
-    position rightElement = leftElement;
+    position p = getMaxValuePos(m);
 
-    int minElement = m.values[leftElement.rowIndex][leftElement.colIndex];
-    if (leftElement.rowIndex == 0)
+    int minElement = m.values[p.rowIndex][p.colIndex];
+    if (p.rowIndex == 0)
         return minElement;
 
-    int subArr[10];
-    int sizeSubArr = 1;
-    while (leftElement.rowIndex >= 0 && rightElement.rowIndex <= m.nCols) {
-        if (leftElement.colIndex == -1) {
-            leftElement.colIndex++;
-            sizeSubArr--;
-        }
+    size_t left = p.colIndex;
+    size_t right = p.colIndex;
+    for (size_t i = p.rowIndex - 1; i >= 0; --i) {
+        if (right < m.nCols - 1)
+            right++;
 
-        if (rightElement.colIndex == m.nCols) {
-            rightElement.colIndex--;
-            sizeSubArr--;
-        }
+        if (left > 0)
+            left--;
 
-        int i = 0;
-        while (i < sizeSubArr) {
-            subArr[i] = (m).values[leftElement.rowIndex][leftElement.colIndex + i];
-            i++;
-        }
-
-        minElement = getMin(subArr, sizeSubArr);
-
-        rightElement.rowIndex--;
-        rightElement.colIndex++;
-        leftElement.rowIndex--;
-        leftElement.colIndex--;
-        sizeSubArr += 2;
+        minElement = min2(minElement, getMinInMatrixRow(m, i, left, right));
     }
 
     return minElement;
@@ -371,7 +361,7 @@ int countEqClassesByRowsSum(matrix const m) {
 }
 
 int getNSpecialElement(matrix const m) {
-    long long criteriaArray[m.nCols];
+    int criteriaArray[m.nCols];
     int subArray[m.nRows];
     for (size_t j = 0; j < m.nCols; ++j) {
         for (size_t i = 0; i < m.nRows; ++i)
@@ -379,11 +369,11 @@ int getNSpecialElement(matrix const m) {
 
         criteriaArray[j] = getSum(subArray, m.nRows);
     }
-
+                                                    //{17, 10, 12, 13}
     int counter = 0;
     for (size_t j = 0; j < m.nCols; ++j)
         for (size_t i = 0; i < m.nRows; ++i)
-            if (criteriaArray[j] - m.values[i][j] < criteriaArray[j])
+            if (criteriaArray[j] - m.values[i][j] < m.values[i][j])
                 counter++;
 
     return counter;

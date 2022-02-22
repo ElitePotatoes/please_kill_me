@@ -428,24 +428,40 @@ void test_countEqClassesByRowsSum_standart() {
                                                    5, 4,
                                                    4, 3,
                                                    1, 6,
-                                                   8, 0}, 6, 2);
+                                                   8, 0,
+                                                   4, 4}, 7, 2);
     assert(countEqClassesByRowsSum(readM) == 3);
+
+    freeMemMatrix(readM);
+}
+void test_countEqClassesByRowsSum_standart2() {
+    matrix readM = createMatrixFromArray((int []) {0,
+                                                   0,
+                                                   0,
+                                                   1,
+                                                   3,
+                                                   10,
+                                                   10}, 7, 1);
+    assert(countEqClassesByRowsSum(readM) == 2);
 
     freeMemMatrix(readM);
 }
 void test_countEqClassesByRowsSum() {
     test_countEqClassesByRowsSum_standart();
+    test_countEqClassesByRowsSum_standart2();
 }
 
 void test_getNSpecialElement_standart() {
     matrix readM = createMatrixFromArray((int []) {3, 5, 5, 4,
-                                                   2, 3, 6, 7,
-                                                   12, 2, 1, 2}, 3, 4);
+                                                      2, 3, 6, 7,
+                                                     12, 2, 1, 2}, 3, 4);
     assert(getNSpecialElement(readM) == 2);
 
     freeMemMatrix(readM);
 }
-void test_getNSpecialElement() {}
+void test_getNSpecialElement() {
+    test_getNSpecialElement_standart();
+}
 
 void test_swapPenultimateRow_standart() {
     matrix readM = createMatrixFromArray((int []) {1, 2, 3,
@@ -503,7 +519,7 @@ void test_matrix() {
     test_transposeIfMatrixHasNotEqualSumOfRows();
     test_isMutuallyInverseMatrices();
     test_findSumOfMaxesOfPseudoDiagonal();
-    test_getMinInArea();
+    //test_getMinInArea();
     test_sortByDistance();
     test_countEqClassesByRowsSum();
     test_getNSpecialElement();

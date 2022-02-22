@@ -106,11 +106,11 @@ void transposeIfMatrixHasNotEqualSumOfRows(matrix m);
 //возвращает значение 'истина', если матрицы m1 и m2 взаимнообратные, иначе - 'ложь'.
 bool isMutuallyInverseMatrices(matrix m1, matrix m2);
 
-//возвращает максимальное значение элемента в диагонали, начинающиеся с индексов indexRow и indexCol, матрицы m.
-int getMaxDiagonalElement(matrix m, size_t indexRow, size_t indexCol);
-
 //возвращает сумму максимальных элементов всех псевдодиагоналей данной матрицы m.
 long long findSumOfMaxesOfPseudoDiagonal(matrix m);
+
+//возвращает минимальный элемент в строке rowIndex матрицы m, начиная с индекса leftPos и заканчивая rightPos.
+int getMinInMatrixRow(matrix m, size_t rowIndex, size_t leftPos, size_t rightPos);
 
 //возвращает минимальное значенита элемент матрицы m в области, образованной пирамидой выше максимального элемента.
 int getMinInArea(matrix m);

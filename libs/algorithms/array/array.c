@@ -211,12 +211,12 @@ bool isUnique(const int a[], const size_t size) {
     return true;
 }
 
-int countNUnique(long long a[], const size_t size) {
+int countNUnique(long long a[], const size_t size) { //7 7 8 8 8 9 9
     qsort(a, size, sizeof(long long), cmp_long_long);
 
-    int counter = 1;
-    for (size_t i = 1; i < size; ++i)
-        if (a[i] != a[i - 1])
+    int counter = 0;
+    for (size_t i = 0; i < size; ++i)
+        if (a[i] == a[i + 1] && a[i] != a[i - 1])
             counter++;
 
     return counter;
