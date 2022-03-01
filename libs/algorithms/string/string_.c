@@ -56,10 +56,9 @@ int strcmp_(const char *lhs, const char *rhs) {
 }
 
 char *copy_(char *beginSource, const char *endSource, char *beginDestination) {
-    while (beginSource != endSource)
-        memcpy(beginDestination, beginSource++, sizeof(char));
+    memcpy(beginDestination, beginSource, endSource - beginSource);
 
-    return beginDestination;
+    return beginDestination + (endSource - beginSource);
 }
 
 char *copyIf_(char *beginSource, const char *endSource, char *beginDestination, int (*f)(int)) {
@@ -200,6 +199,27 @@ void reverseWords(char *begin) {
 }
 
 /********************************************************** 4 *********************************************************/
+
+char spaceInsteadDigits(char *begin) {
+    char *endSource = getEndOfString(begin);
+    char *startStringBuffer = stringBuffer;
+    char *endStringBuffer = copy_(begin, endSource, stringBuffer);
+    *endStringBuffer = '\0';
+
+    while (*startStringBuffer != '\0') {
+        if (isalpha(*startStringBuffer))
+            *begin++ = *startStringBuffer;
+        else if (isdigit(*startStringBuffer)) {
+            unsigned char a = *startStringBuffer - CODE_ASCII;
+            while (a--)
+                *begin++ = ' ';
+        }
+
+        startStringBuffer++;
+    }
+
+    *begin = '\0';
+}
 
 /********************************************************** 5 *********************************************************/
 

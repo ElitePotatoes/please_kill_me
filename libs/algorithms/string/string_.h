@@ -17,7 +17,12 @@
 #define ASSERT_STRING (expected, got) assertString(expected, got, \
                     __FILE__, __FUNCTION__, __LINE__);
 
-char stringBuffer [1000];
+#define MAX_STRING_SIZE 100
+#define MAX_N_WORDS_IN_STRING 100
+#define MAX_WORD_SIZE 20
+#define CODE_ASCII 48
+
+char stringBuffer [MAX_STRING_SIZE + 1];
 
 typedef struct wordDescriptor {
     char *begin;    //позиция начала слова.
@@ -113,5 +118,9 @@ void reverseWord(wordDescriptor word);
 
 //преобразует символы во всех словах, расположенные на ленте памяти, начиная с begin и заканчивая ноль-символом.
 void reverseWords(char *begin);
+
+//преобразует строку, расположенную на ленте памяти, начиная с адреса begin и заканчивая ноль-символом,
+//заменяя каждую цифру соответствующим ей числом пробелов.
+char spaceInsteadDigits(char *begin);
 
 #endif //MAIN_C_STRING__H
