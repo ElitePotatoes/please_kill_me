@@ -17,6 +17,13 @@
 #define ASSERT_STRING (expected, got) assertString(expected, got, \
                     __FILE__, __FUNCTION__, __LINE__);
 
+char stringBuffer [1000];
+
+typedef struct wordDescriptor {
+    char *begin;    //позиция начала слова.
+    char *end;      //позиция первого символа, после последнего символа слова.
+} wordDescriptor;
+
 //возвращает количество элементов, расположенные на ленте памяти, начиная с begin и заканчивая ноль-символом.
 size_t strlen_(const char *begin);
 
@@ -57,7 +64,7 @@ char *copyIf_(char *beginSource, const char *endSource, char *beginDestination, 
 char *copyIfReverse_(char *rbeginSource, const char *rendSource, char *beginDestination, int (*f)(int));
 
 //возвращает указатель на последний элемент, расположенные на ленте памяти, начиная с begin и заканчивая ноль-символом.
-char *getEndOfString_(char *begin);
+char *getEndOfString(char *begin);
 
 //удаляет все пробельные символы, расположенные на ленте памяти, начиная с begin и заканчивая ноль-символом.
 void removeAllSpaces(char *begin);
@@ -76,5 +83,35 @@ void removeAdjacentEqualLetters(char *begin);
 //оставляет только один пробел в каждой последовательности подряд идущих одинаковых пробелов,
 //расположенные на ленте памяти, начиная с begin и заканчивая ноль-символом.
 void removeExtraSpaces(char *begin);
+
+//возвращает зачение 'true', если слово было считано, расположенное на ленте памяти,
+//начиная с begin и заканчивая ноль-символом, и записывает адрес его начала и конца в word, иначе - 'false'.
+bool getWord(char *beginSearch, wordDescriptor *word);
+
+//возвращает зачение 'true', если слово было считано, расположенное на ленте памяти,
+//начиная с rbegin и заканчивая rend, и записывает адрес его начала и конца в word, иначе - 'false'.
+bool getWordReverse(char *rbegin, const char *rend, wordDescriptor *word);
+
+//преобразует слово word, чтобы его цифры были перенесены в начало в той же последовательности.
+void digitToStart(wordDescriptor word);
+
+//преобразует слово word, чтобы его цифры были перенесены в начало в обратной последовательности.
+void reverseDigitToStart(wordDescriptor word);
+
+//преобразует слово word, чтобы его цифры были перенесены в конец в той же последовательности.
+void digitToEnd(wordDescriptor word);
+
+//преобразует слово word, чтобы его цифры были перенесены в конец в обратной последовательности.
+void reverseDigitToEnd(wordDescriptor word);
+
+//записывает по адресу beginDestination фрагмент памяти, начиная с адреса rbeginSource до rendSource.
+//Возвращает указатель на следующий свободный фрагмент памяти в destination.
+char *copyReverse(char *rbeginSource, const char *rendSource, char *beginDestination);
+
+//преобразует слово word, чтобы его символы были перенесены в обратной последовательности.
+void reverseWord(wordDescriptor word);
+
+//преобразует символы во всех словах, расположенные на ленте памяти, начиная с begin и заканчивая ноль-символом.
+void reverseWords(char *begin);
 
 #endif //MAIN_C_STRING__H

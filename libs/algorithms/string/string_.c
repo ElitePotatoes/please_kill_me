@@ -80,7 +80,7 @@ char *copyIfReverse_(char *rbeginSource, const char *rendSource, char *beginDest
 
 /********************************************************** 1 *********************************************************/
 
-char *getEndOfString_(char *begin) {
+char *getEndOfString(char *begin) {
     while (*begin != '\0')
         begin++;
 
@@ -88,7 +88,7 @@ char *getEndOfString_(char *begin) {
 }
 
 void removeAllSpaces(char *begin) {
-    char *endSource = getEndOfString_(begin);
+    char *endSource = getEndOfString(begin);
     char *destination = copyIf_(begin, endSource, begin, isspace);
     *destination = '\0';
 }
@@ -133,7 +133,76 @@ void removeExtraSpaces(char *begin) {
 }
 
 /********************************************************** 3 *********************************************************/
+
+bool getWord(char *beginSearch, wordDescriptor *word) {
+    word->begin = findNonSpace_(beginSearch);
+    if (*word->begin == '\0')
+        return false;
+
+    word->end = findSpace_(word->begin);
+
+    return true;
+}
+
+bool getWordReverse(char *rbegin, const char *rend, wordDescriptor *word) {
+    word->begin = findNonSpaceReverse_(rbegin, rend);
+    if (word->begin == rend)
+        return false;
+
+    word->end = findNonSpaceReverse_(word->begin, rend);
+
+    return true;
+}
+
+void digitToStart(wordDescriptor word) {
+    char *endStringBuffer = copy_(word.begin, word.end, stringBuffer);
+    char *recPosition = copyIf_(endStringBuffer - 1, stringBuffer - 1, word.begin, isdigit);
+    copyIfReverse_(stringBuffer, endStringBuffer, recPosition, isalpha);
+}
+
+void reverseDigitToStart(wordDescriptor word) {
+    char *endStringBuffer = copy_(word.begin, word.end, stringBuffer);
+    char *recPosition = copyIfReverse_(endStringBuffer - 1, stringBuffer - 1, word.begin, isdigit);
+    copyIf_(stringBuffer, endStringBuffer, recPosition, isalpha);
+}
+
+void digitToEnd(wordDescriptor word) {
+    char *endStringBuffer = copy_(word.begin, word.end, stringBuffer);
+    char *recPosition = copyIf_(endStringBuffer - 1, stringBuffer - 1, word.begin, isalpha);
+    copyIf_(stringBuffer, endStringBuffer, recPosition, isdigit);
+}
+
+void reverseDigitToEnd(wordDescriptor word) {
+    char *endStringBuffer = copy_(word.begin, word.end, stringBuffer);
+    char *recPosition = copyIf_(endStringBuffer - 1, stringBuffer - 1, word.begin, isalpha);
+    copyIfReverse_(stringBuffer, endStringBuffer, recPosition, isdigit);
+}
+
+char *copyReverse(char *rbeginSource, const char *rendSource, char *beginDestination) {
+    while (rbeginSource != rendSource)
+        memcpy(beginDestination, rbeginSource--, sizeof(char));
+
+    return beginDestination;
+}
+
+void reverseWord(wordDescriptor word) {
+    char *endStringBuffer = copy_(word.begin, word.end, stringBuffer);
+    copyReverse(endStringBuffer, stringBuffer, word.begin);
+}
+
+void reverseWords(char *begin) {
+    wordDescriptor word;
+    while (getWord(begin, &word)) {
+        reverseWord(word);
+
+        begin = word.end;
+    }
+}
+
 /********************************************************** 4 *********************************************************/
+
 /********************************************************** 5 *********************************************************/
+
 /********************************************************** 6 *********************************************************/
+
 /********************************************************** 7 *********************************************************/
