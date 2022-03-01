@@ -22,12 +22,20 @@
 #define MAX_WORD_SIZE 20
 #define CODE_ASCII 48
 
-char stringBuffer [MAX_STRING_SIZE + 1];
-
 typedef struct wordDescriptor {
     char *begin;    //позиция начала слова.
     char *end;      //позиция первого символа, после последнего символа слова.
 } wordDescriptor;
+
+char stringBuffer [MAX_STRING_SIZE + 1];
+
+typedef struct bagOfWords {
+    wordDescriptor words[MAX_N_WORDS_IN_STRING];
+    size_t size;
+} bagOfWords;
+
+bagOfWords _bag;
+bagOfWords _bag2;
 
 //возвращает количество элементов, расположенные на ленте памяти, начиная с begin и заканчивая ноль-символом.
 size_t strlen_(const char *begin);
@@ -122,5 +130,9 @@ void reverseWords(char *begin);
 //преобразует строку, расположенную на ленте памяти, начиная с адреса begin и заканчивая ноль-символом,
 //заменяя каждую цифру соответствующим ей числом пробелов.
 char spaceInsteadDigits(char *begin);
+
+//возвращает значение 'true', если все слова, расположенные на ленте памяти,
+//начиная с адреса begin и заканчивая ноль-символом, лексичесически упорядочены, иначе - 'false'.
+bool isOrderedWords(char *begin);
 
 #endif //MAIN_C_STRING__H
