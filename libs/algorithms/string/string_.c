@@ -16,33 +16,29 @@ char *find_(char *begin, const char *end, int ch) {
 }
 
 char *findNonSpace_(char *begin) {
-    while (*begin != '\0')
-        if (!isspace(begin++))
-            break;
+    while (*begin != '\0' && isspace(*begin))
+        begin++;
 
     return begin;
 }
 
 char *findSpace_(char *begin) {
-    while (*begin != '\0')
-        if (isspace(begin++))
-            break;
+    while (*begin != '\0' && !isspace(*begin))
+        begin++;
 
     return begin;
 }
 
 char *findNonSpaceReverse_(char *rbegin, const char *rend) {
-    while (rbegin != rend)
-        if (isspace(rbegin--))
-            break;
+    while (rbegin != rend && !isspace(*rbegin))
+        rbegin--;
 
     return ++rbegin;
 }
 
 char *findSpaceReverse_(char *rbegin, const char *rend) {
-    while (rbegin != rend)
-        if (isspace(rbegin--))
-            break;
+    while (rbegin != rend && !isspace(*rbegin--))
+        rbegin--;
 
     return rbegin;
 }
@@ -84,16 +80,60 @@ char *copyIfReverse_(char *rbeginSource, const char *rendSource, char *beginDest
 
 /********************************************************** 1 *********************************************************/
 
-char *getEndOfString_(const char *begin) {
-    char *end = *begin;
-    while (*end != '\0')
-        end++;
+char *getEndOfString_(char *begin) {
+    while (*begin != '\0')
+        begin++;
 
-    return end;
+    return begin;
 }
 
-void removeNonLetters(char *begin) {
+void removeAllSpaces(char *begin) {
     char *endSource = getEndOfString_(begin);
     char *destination = copyIf_(begin, endSource, begin, isspace);
     *destination = '\0';
 }
+
+//TODO РАЗОБРАТЬСЯ В ВЫВОДЕ ОШИБОК, ВМЕСТЕ С МАКРОПОДСТАНОВКОЙ
+void assertString(const char *expected, char *got, char const *fileName, char const *funcName, int line) {
+    if (strcmp_(expected, got)) {
+        fprintf(stderr, "File %s\n", fileName);
+        fprintf(stderr, "%s - failed on line %d\n", funcName, line);
+        fprintf(stderr, "Expected: \"%s \"\n", expected);
+        fprintf(stderr, "Got: \"%s\"\n\n", got);
+    } else
+        fprintf(stderr, "%s - OK\n", funcName);
+}
+
+/********************************************************** 2 *********************************************************/
+
+char *removeSameLetters(char *begin) {
+    char *equal = begin++;
+    while (begin == equal && *equal != '\0')
+        equal++;
+
+    memcpy(--equal, begin, sizeof(char));
+
+    return ++equal;
+}
+
+void removeAdjacentEqualLetters(char *begin) {
+    while (*begin != '\0')
+        if (!isspace(*begin))
+            removeSameLetters(begin);
+
+    *begin = '\0';
+}
+
+void removeExtraSpaces(char *begin) {
+    while (*begin != '\0')
+        if (isspace(*begin))
+            removeSameLetters(begin);
+
+    *begin = '\0';
+}
+
+/********************************************************** 3 *********************************************************/
+/********************************************************** 4 *********************************************************/
+/********************************************************** 5 *********************************************************/
+/********************************************************** 6 *********************************************************/
+/********************************************************** 7 *********************************************************/

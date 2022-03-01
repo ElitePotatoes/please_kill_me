@@ -14,6 +14,9 @@
 #include <assert.h>
 #include <ctype.h>
 
+#define ASSERT_STRING (expected, got) assertString(expected, got, \
+                    __FILE__, __FUNCTION__, __LINE__);
+
 //возвращает количество элементов, расположенные на ленте памяти, начиная с begin и заканчивая ноль-символом.
 size_t strlen_(const char *begin);
 
@@ -54,9 +57,24 @@ char *copyIf_(char *beginSource, const char *endSource, char *beginDestination, 
 char *copyIfReverse_(char *rbeginSource, const char *rendSource, char *beginDestination, int (*f)(int));
 
 //возвращает указатель на последний элемент, расположенные на ленте памяти, начиная с begin и заканчивая ноль-символом.
-char *getEndOfString_(const char *begin);
+char *getEndOfString_(char *begin);
 
 //удаляет все пробельные символы, расположенные на ленте памяти, начиная с begin и заканчивая ноль-символом.
-void removeNonLetters(char *begin);
+void removeAllSpaces(char *begin);
+
+//ну как бы всё и так понятно из названия самой функции, но к этому мы вернемся позже.
+void assertString(const char *expected, char *got, char const *fileName, char const *funcName, int line);
+
+//оставляет только один символ в каждой последовательности подряд идущих одинаковых символов,
+//расположенные на ленте памяти, начиная с begin и заканчивая ноль-символом.
+char *removeSameLetters(char *begin);
+
+//оставляет только один символ в каждой последовательности подряд идущих одинаковых символов (не считая пробелов),
+//расположенные на ленте памяти, начиная с begin и заканчивая ноль-символом.
+void removeAdjacentEqualLetters(char *begin);
+
+//оставляет только один пробел в каждой последовательности подряд идущих одинаковых пробелов,
+//расположенные на ленте памяти, начиная с begin и заканчивая ноль-символом.
+void removeExtraSpaces(char *begin);
 
 #endif //MAIN_C_STRING__H
