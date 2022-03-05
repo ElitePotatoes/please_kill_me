@@ -60,8 +60,8 @@ char *findNonSpaceReverse_(char *rbegin, const char *rend);
 //начиная с rbegin и заканчивая rend. Если символ не найден, возвращается адрес rend.
 char *findSpaceReverse_(char *rbegin, const char *rend);
 
-//возвращает значение '-1', если lhs располагается до rhs в лексикографическом порядке,
-//значение - '0', если lhs и rhs равны, иначе – '1'.
+//возвращает значение '<0', если lhs располагается до rhs в лексикографическом порядке,
+//значение - '0', если lhs и rhs равны, иначе – '>0'.
 int strcmp_(const char *lhs, const char *rhs);
 
 //записывает по адресу beginDestination фрагмент памяти, начиная с адреса beginSource до endSource.
@@ -131,8 +131,24 @@ void reverseWords(char *begin);
 //заменяя каждую цифру соответствующим ей числом пробелов.
 char spaceInsteadDigits(char *begin);
 
+//возвращает значение '<0', если буквы в слове w1 располагается до w2 в лексикографическом порядке,
+//значение - '0', если lhs и rhs равны, иначе – '>0'
+int areWordsEqual(wordDescriptor w1, wordDescriptor w2);
+
+//заменить все вхождения слова replacement на слово necessary, расположенную на ленте памяти,
+//начиная с адреса begin и заканчивая ноль-символом.
+void replace(char *begin, char *replacement, char *necessary);
+
 //возвращает значение 'true', если все слова, расположенные на ленте памяти,
 //начиная с адреса begin и заканчивая ноль-символом, лексичесически упорядочены, иначе - 'false'.
 bool isOrderedWords(char *begin);
+
+//возвращает значение 'true', если слово является палиндромом, расположенные на ленте памяти,
+//начиная с адреса begin и заканчивая ноль-символом, иначе - 'false'.
+bool isPalindromeWord(wordDescriptor w);
+
+//возвращает количество слов-палиндромов, расположенные на ленте памяти,
+//начиная с адреса begin и заканчивая ноль-символом.
+int getCountPalindromeWords(char *begin);
 
 #endif //MAIN_C_STRING__H

@@ -23,7 +23,7 @@ char *findNonSpace_(char *begin) {
 }
 
 char *findSpace_(char *begin) {
-    while (*begin != '\0' && !isspace(*begin))
+    while (*begin != '\0' && !isspace(*begin) && *begin != ',')
         begin++;
 
     return begin;
@@ -37,28 +37,25 @@ char *findNonSpaceReverse_(char *rbegin, const char *rend) {
 }
 
 char *findSpaceReverse_(char *rbegin, const char *rend) {
-    while (rbegin != rend && !isspace(*rbegin--))
+    while (rbegin != rend && !isspace(*rbegin))
         rbegin--;
 
     return rbegin;
 }
 
 int strcmp_(const char *lhs, const char *rhs) {
-    while (lhs == rhs) {
-        if (*lhs == '\0')
-            return 0;
-
+    while (*lhs && *lhs == *rhs) {
         lhs++;
         rhs++;
     }
 
-    return (*lhs < *rhs) ? -1 : 1;
+    return (unsigned char) *lhs - (unsigned char) *rhs;
 }
 
 char *copy_(char *beginSource, const char *endSource, char *beginDestination) {
     memcpy(beginDestination, beginSource, endSource - beginSource);
 
-    return beginDestination + (endSource - beginSource) + 1;
+    return beginDestination + (endSource - beginSource);
 }
 
 char *copyIf_(char *beginSource, const char *endSource, char *beginDestination, int (*f)(int)) {
@@ -220,45 +217,56 @@ char spaceInsteadDigits(char *begin) {
 
 /********************************************************** 5 *********************************************************/
 
-bool isEqualWords(wordDescriptor w1, wordDescriptor w2) {
-    strcmp(w1.begin, w2.begin);
+int areWordsEqual(wordDescriptor w1, wordDescriptor w2) {
+    return strcmp_(w1.begin, w2.begin);
 }
 
-void replace(char *source, char *w1, char *w2) {
-    size_t w1Size = strlen_(w1);
-    size_t w2Size = strlen_(w2);
-    wordDescriptor word1 = {w1, w1 + w1Size};
-    wordDescriptor word2 = {w2, w2 + w2Size};
+void replace(char *begin, char *replacement, char *necessary) {
+    size_t sizeW1 = strlen_(replacement);
+    size_t sizeW2 = strlen_(necessary);
+    wordDescriptor word1 = {replacement, replacement + sizeW1};
+    wordDescriptor word2 = {necessary, necessary + sizeW2};
 
-    char *readPtr, *recPtr;
-    if (w1Size >= w2Size) {
-        readPtr = source;
-        recPtr = source;
-    }
+    char *startStringBuffer;
+    if (sizeW1 >= sizeW2)
+        startStringBuffer = begin;
     else {
-        copy_(source, getEndOfString(source), stringBuffer);
-        readPtr = stringBuffer;
-        recPtr = source;
+        copy_(begin, getEndOfString(begin), stringBuffer);
+        startStringBuffer = begin;
     }
 
+    wordDescriptor readWord;
+    while (getWord(begin, &readWord)) {
+        if (areWordsEqual(word1, readWord) != 0)
+            startStringBuffer = copy_(word2.begin, word2.end, startStringBuffer);
+        else
+            startStringBuffer = copy_(readWord.begin, readWord.end, startStringBuffer);
 
+        *startStringBuffer++ = ' ';
+        begin = readWord.end;
+    }
+
+    *startStringBuffer = '\0';
 }
 
 /********************************************************** 6 *********************************************************/
 
 bool isOrderedWords(char *begin) {
-    wordDescriptor w;
-    if (!getWord(begin, &w))
+    wordDescriptor w1;
+    wordDescriptor w2;
+
+    if (!getWord(begin, &w1))
         return true;
 
-    while(getWord(begin, &w)) {
-        while (w.begin < w.end)
-            w.begin++;
-
-        if (w.begin != w.end)
+    begin = w1.end;
+    while (getWord(begin, &w2)) {
+        if (areWordsEqual(w1, w2) > 0)
             return false;
 
-        begin++;
+        begin = w2.end;
+
+        w1.begin = w2.begin;
+        w1.end = w2.end;
     }
 
     return true;
@@ -266,6 +274,32 @@ bool isOrderedWords(char *begin) {
 
 /********************************************************** 7 *********************************************************/
 
-void getBagOfWords(bagOfWords *bag, char *s) {
+/*void outputBagOfWords(bagOfWords *bag, char *begin) {
+    while ()
+}*/
 
+/********************************************************** 8 *********************************************************/
+
+bool isPalindromeWord(wordDescriptor w) {
+    while (w.begin <= w.end) {
+        if (*w.begin != *w.end)
+            return false;
+
+        w.begin++; w.end++;
+    }
+
+    return true;
 }
+
+int getCountPalindromeWords(char *begin) {
+    wordDescriptor readWord;
+
+    int counter = 0;
+    while (getWord(begin, &readWord))
+        if (isPalindromeWord(readWord))
+            counter++;
+
+    return counter;
+}
+
+/********************************************************** 9 *********************************************************/
