@@ -252,8 +252,7 @@ void replace(char *begin, char *replacement, char *necessary) {
 /********************************************************** 6 *********************************************************/
 
 bool isOrderedWords(char *begin) {
-    wordDescriptor w1;
-    wordDescriptor w2;
+    wordDescriptor w1, w2;
 
     if (!getWord(begin, &w1))
         return true;
@@ -303,3 +302,51 @@ int getCountPalindromeWords(char *begin) {
 }
 
 /********************************************************** 9 *********************************************************/
+
+bool isEmptyString(char *begin) {
+    return (strlen_(begin) == 0) ? true : false;
+}
+
+char *getInterleavedString(char *fbegin, char *sbegin) {
+    char *startStringBuffer;
+    if (isEmptyString(fbegin) && isEmptyString(sbegin))
+        return startStringBuffer;
+
+    wordDescriptor w1, w2;
+    bool isW1Found, isW2Found;
+    while (isW1Found = getWord(fbegin, &w1), isW2Found = getWord(fbegin, &w2), isW1Found || isW2Found) {
+        if (isW1Found) {
+            startStringBuffer = copy_(w1.begin, w1.end, startStringBuffer);
+            *startStringBuffer++ = ' ';
+
+            fbegin = w1.end;
+        }
+
+        if (isW2Found) {
+            startStringBuffer = copy_(w2.begin, w2.end, startStringBuffer);
+            *startStringBuffer++ = ' ';
+
+            sbegin = w2.end;
+        }
+    }
+
+    *(--startStringBuffer) = '\0';
+
+    return startStringBuffer;
+}
+
+/********************************************************* 10 *********************************************************/
+
+void reverseString(char *begin) {
+    char *startStringBuffer, *endStringBuffer;
+    char *end = getEndOfString(begin);
+
+    wordDescriptor readWord;
+    while (getWordReverse(end, begin, &readWord))
+        endStringBuffer = copy_(readWord.begin, readWord.end, startStringBuffer);
+
+    begin = copy_(startStringBuffer, endStringBuffer, begin);
+    *begin = '\0';
+}
+
+/********************************************************* 11 *********************************************************/

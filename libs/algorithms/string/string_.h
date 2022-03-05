@@ -143,12 +143,23 @@ void replace(char *begin, char *replacement, char *necessary);
 //начиная с адреса begin и заканчивая ноль-символом, лексичесически упорядочены, иначе - 'false'.
 bool isOrderedWords(char *begin);
 
-//возвращает значение 'true', если слово является палиндромом, расположенные на ленте памяти,
+//возвращает значение 'true', если слово является палиндромом, расположенное на ленте памяти,
 //начиная с адреса begin и заканчивая ноль-символом, иначе - 'false'.
 bool isPalindromeWord(wordDescriptor w);
 
 //возвращает количество слов-палиндромов, расположенные на ленте памяти,
 //начиная с адреса begin и заканчивая ноль-символом.
 int getCountPalindromeWords(char *begin);
+
+//возвращает значение 'true', если строка пустая, расположенная на ленте памяти,
+//начиная с адреса begin и заканчивая ноль-символом, иначе - 'false'.
+bool isEmptyString(char *begin);
+
+//
+char *getInterleavedString(char *fbegin, char *sbegin);
+
+//преобразует строку, расположенную на ленте памяти, начиная с адреса begin и заканчивая ноль-символом,
+//располагая каждое слово в обратном порядке.
+void reverseString(char *begin);
 
 #endif //MAIN_C_STRING__H
