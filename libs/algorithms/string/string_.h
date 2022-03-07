@@ -155,11 +155,19 @@ int getCountPalindromeWords(char *begin);
 //начиная с адреса begin и заканчивая ноль-символом, иначе - 'false'.
 bool isEmptyString(char *begin);
 
-//
+//---преобразует строку, изменяя порядок следования слов в строке на обратный.
 char *getInterleavedString(char *fbegin, char *sbegin);
 
 //преобразует строку, расположенную на ленте памяти, начиная с адреса begin и заканчивая ноль-символом,
 //располагая каждое слово в обратном порядке.
 void reverseString(char *begin);
+
+//---дополняет строку, содержащую меньшее количество слов, последними словами строки,
+//в которой содержится большее количество слов.
+void addWordsToSmallerString_Core(char *fbegin, char *sbegin, size_t fSize, size_t sSize);
+
+//---дополняет строку, содержащую меньшее количество слов, последними словами строки,
+//в которой содержится большее количество слов.
+void addWordsToSmallerString(char *fbegin, char *sbegin);
 
 #endif //MAIN_C_STRING__H

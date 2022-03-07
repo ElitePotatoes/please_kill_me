@@ -30,7 +30,7 @@ char *findSpace_(char *begin) {
 }
 
 char *findNonSpaceReverse_(char *rbegin, const char *rend) {
-    while (rbegin != rend && !isspace(*rbegin))
+    while (rbegin != rend && isspace(*rbegin))
         rbegin--;
 
     return ++rbegin;
@@ -61,7 +61,7 @@ char *copy_(char *beginSource, const char *endSource, char *beginDestination) {
 char *copyIf_(char *beginSource, const char *endSource, char *beginDestination, int (*f)(int)) {
     while (beginSource != endSource)
         if (f(*beginSource))
-            memcpy(beginDestination, beginSource++, sizeof(char));
+            *beginDestination = *beginSource++;
 
     return beginDestination;
 }
@@ -69,7 +69,7 @@ char *copyIf_(char *beginSource, const char *endSource, char *beginDestination, 
 char *copyIfReverse_(char *rbeginSource, const char *rendSource, char *beginDestination, int (*f)(int)) {
     while (rbeginSource != rendSource)
         if (f(*rbeginSource))
-            memcpy(beginDestination, rbeginSource--, sizeof(char));
+            *beginDestination = *rbeginSource--;
 
     return beginDestination;
 }
@@ -137,7 +137,7 @@ bool getWord(char *beginSearch, wordDescriptor *word) {
     return true;
 }
 
-bool getWordReverse(char *rbegin, const char *rend, wordDescriptor *word) {
+bool getWordReverse(char *rbegin, const char *rend, wordDescriptor *word) { //__aabbb__\0
     word->begin = findNonSpaceReverse_(rbegin, rend);
     if (word->begin == rend)
         return false;
@@ -252,12 +252,12 @@ void replace(char *begin, char *replacement, char *necessary) {
 /********************************************************** 6 *********************************************************/
 
 bool isOrderedWords(char *begin) {
-    wordDescriptor w1, w2;
-
+    wordDescriptor w1;
     if (!getWord(begin, &w1))
         return true;
 
     begin = w1.end;
+    wordDescriptor w2;
     while (getWord(begin, &w2)) {
         if (areWordsEqual(w1, w2) > 0)
             return false;
@@ -273,9 +273,9 @@ bool isOrderedWords(char *begin) {
 
 /********************************************************** 7 *********************************************************/
 
-/*void outputBagOfWords(bagOfWords *bag, char *begin) {
-    while ()
-}*/
+void outputBagOfWords(bagOfWords *bag, char *begin) {
+
+}
 
 /********************************************************** 8 *********************************************************/
 
@@ -314,7 +314,7 @@ char *getInterleavedString(char *fbegin, char *sbegin) {
 
     wordDescriptor w1, w2;
     bool isW1Found, isW2Found;
-    while (isW1Found = getWord(fbegin, &w1), isW2Found = getWord(fbegin, &w2), isW1Found || isW2Found) {
+    while (isW1Found = getWord(fbegin, &w1), isW2Found = getWord(sbegin, &w2), isW1Found || isW2Found) {
         if (isW1Found) {
             startStringBuffer = copy_(w1.begin, w1.end, startStringBuffer);
             *startStringBuffer++ = ' ';
@@ -338,15 +338,75 @@ char *getInterleavedString(char *fbegin, char *sbegin) {
 /********************************************************* 10 *********************************************************/
 
 void reverseString(char *begin) {
-    char *startStringBuffer, *endStringBuffer;
+    wordDescriptor readWord;
+
     char *end = getEndOfString(begin);
 
-    wordDescriptor readWord;
-    while (getWordReverse(end, begin, &readWord))
-        endStringBuffer = copy_(readWord.begin, readWord.end, startStringBuffer);
+    char *endStringBuffer = copy_(begin, end, stringBuffer);
+    char *search = endStringBuffer - 1;
+    while (getWordReverse(search, stringBuffer - 1, &readWord)) {
+        begin = copy_(readWord.begin, readWord.end, begin);
+        *begin++ = ' ';
 
-    begin = copy_(startStringBuffer, endStringBuffer, begin);
-    *begin = '\0';
+        search -= readWord.end - readWord.begin + 1;
+        search = findNonSpaceReverse_(search, stringBuffer - 1);
+    }
+
+    *(--begin) = '\0';
 }
 
 /********************************************************* 11 *********************************************************/
+
+void printWordBeforeFirstWordWithA (char *s) {
+
+}
+
+/********************************************************* 12 *********************************************************/
+
+/********************************************************* 13 *********************************************************/
+
+/********************************************************* 14 *********************************************************/
+
+/********************************************************* 15 *********************************************************/
+
+/********************************************************* 16 *********************************************************/
+
+/********************************************************* 17 *********************************************************/
+
+/********************************************************* 18 *********************************************************/
+
+void addWordsToSmallerString_Core(char *fbegin, char *sbegin, size_t fSize, size_t sSize) {
+    wordDescriptor readWord;
+
+    size_t different = fSize - sSize;
+    char *search = getEndOfString(fbegin) - 1;
+    while (different--) {
+        getWordReverse(search, fbegin - 1, &readWord);
+
+        search -= readWord.end - readWord.begin + 1;
+        search = findNonSpaceReverse_(search, fbegin - 1);
+    }
+
+    char *endSbegin = getEndOfString(sbegin);
+    *endSbegin++ = ' ';
+
+    *copy_(readWord.begin, getEndOfString(fbegin), endSbegin) = '\0';
+}
+
+void addWordsToSmallerString(char *fbegin, char *sbegin) {
+    size_t fSize = strlen_(fbegin);
+    size_t sSize = strlen_(sbegin);
+
+    if (fSize > sSize)
+        addWordsToSmallerString_Core(fbegin, sbegin, sSize, fSize);
+    else if (fSize < sSize)
+        addWordsToSmallerString_Core(sbegin, fbegin, fSize, sSize);
+    else
+        return;
+}
+
+/********************************************************* 19 *********************************************************/
+
+bool holabola(char *begin, char *symbols) {
+
+}
