@@ -373,6 +373,21 @@ void printWordBeforeFirstWordWithA (char *s) {
 
 /********************************************************* 17 *********************************************************/
 
+void deletePalindromeWords(char *begin) {
+    wordDescriptor readWord;
+
+    char *end = getEndOfString(begin);
+    char *endStringBuffer = copy_(begin, end, stringBuffer);
+    while (getWord(endStringBuffer, &readWord))
+        if (!isPalindromeWord(readWord)) {
+            begin = copy_(readWord.begin, readWord.end, begin);
+
+            *begin++ = ' ';
+        }
+
+    *(--begin) = '\0';
+}
+
 /********************************************************* 18 *********************************************************/
 
 void addWordsToSmallerString_Core(char *fbegin, char *sbegin, size_t fSize, size_t sSize) {

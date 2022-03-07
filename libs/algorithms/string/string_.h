@@ -162,6 +162,9 @@ char *getInterleavedString(char *fbegin, char *sbegin);
 //располагая каждое слово в обратном порядке.
 void reverseString(char *begin);
 
+//удаляет из данной строки слова-палиндромы.
+void deletePalindromeWords(char *begin);
+
 //---дополняет строку, содержащую меньшее количество слов, последними словами строки,
 //в которой содержится большее количество слов.
 void addWordsToSmallerString_Core(char *fbegin, char *sbegin, size_t fSize, size_t sSize);
