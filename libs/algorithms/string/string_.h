@@ -162,6 +162,9 @@ char *getInterleavedString(char *fbegin, char *sbegin);
 //располагая каждое слово в обратном порядке.
 void reverseString(char *begin);
 
+//получаем строку из слов данной строки, которые отличны от последнего слова.
+void getStringWithoutSameLastWord(char *begin);
+
 //удаляет из данной строки слова-палиндромы.
 void deletePalindromeWords(char *begin);
 

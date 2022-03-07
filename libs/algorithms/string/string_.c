@@ -369,7 +369,30 @@ void printWordBeforeFirstWordWithA (char *s) {
 
 /********************************************************* 15 *********************************************************/
 
+void getStringWithoutSameLastWord(char *begin) {
+    char *end = getEndOfString(begin);
+
+    wordDescriptor needDelete;
+    getWordReverse(end - 1, begin - 1, &needDelete);
+
+    end -= needDelete.end - needDelete.begin - 1;
+    *end = '\0';
+
+    wordDescriptor readWord;
+    char *endStringBuffer = copy_(begin, end, stringBuffer);
+    while (getWord(endStringBuffer, &readWord))
+        if (areWordsEqual(readWord, needDelete) != 0) {
+            begin = copy_(readWord.begin, readWord.end, begin);
+
+            *begin++ = ' ';
+        }
+
+    *(--begin) = '\0';
+}
+
 /********************************************************* 16 *********************************************************/
+
+
 
 /********************************************************* 17 *********************************************************/
 
