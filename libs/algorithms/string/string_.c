@@ -432,8 +432,13 @@ void addWordsToSmallerString_Core(char *fbegin, char *sbegin, size_t fSize, size
 }
 
 void addWordsToSmallerString(char *fbegin, char *sbegin) {
-    size_t fSize = strlen_(fbegin);
-    size_t sSize = strlen_(sbegin);
+    wordDescriptor w1;
+
+    size_t fSize = 0;
+    fSize += getWord(fbegin, &w1);
+
+    size_t sSize = 0;
+    sSize += getWord(sbegin, &w1);
 
     if (fSize > sSize)
         addWordsToSmallerString_Core(fbegin, sbegin, sSize, fSize);
