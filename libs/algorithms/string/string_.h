@@ -131,6 +131,18 @@ void reverseWords(char *begin);
 //заменяя каждую цифру соответствующим ей числом пробелов.
 char spaceInsteadDigits(char *begin);
 
+//---возвращает количество слов в строке.
+int countWords(char *begin);
+
+//---заносит слова из строки в сумку.
+void getBagOfWords(bagOfWords *bag, char *begin);
+
+//---выводит слово.
+void outputWord(wordDescriptor w);
+
+//---выводит слова.
+void outputReverseWords(bagOfWords *bag);
+
 //возвращает значение '<0', если буквы в слове w1 располагается до w2 в лексикографическом порядке,
 //значение - '0', если lhs и rhs равны, иначе – '>0'
 int areWordsEqual(wordDescriptor w1, wordDescriptor w2);

@@ -246,7 +246,7 @@ void replace(char *begin, char *replacement, char *necessary) {
         begin = readWord.end;
     }
 
-    *startStringBuffer = '\0';
+    *(--startStringBuffer) = '\0';
 }
 
 /********************************************************** 6 *********************************************************/
@@ -273,8 +273,39 @@ bool isOrderedWords(char *begin) {
 
 /********************************************************** 7 *********************************************************/
 
-void outputBagOfWords(bagOfWords *bag, char *begin) {
+int countWords(char *begin) {
+    wordDescriptor readWord;
 
+    int counter = 0;
+    while (getWord(begin, &readWord)) {
+        ++counter;
+
+        begin = readWord.end;
+    }
+
+    return counter;
+}
+
+void getBagOfWords(bagOfWords *bag, char *begin) {
+    bag->size = 0;
+    wordDescriptor readWord;
+    while (getWord(begin, &readWord)) {
+        bag->words[bag->size++] = readWord;
+
+        begin = readWord.end;
+    }
+}
+
+void outputWord(wordDescriptor w) {
+    while (w.begin <= w.end)
+        printf("%c", *w.begin++);
+
+    printf("\n");
+}
+
+void outputReverseWords(bagOfWords *bag) {
+    for (size_t i = bag->size; i >= 0; --i)
+        outputWord(bag->words[i]);
 }
 
 /********************************************************** 8 *********************************************************/
@@ -294,9 +325,12 @@ int getCountPalindromeWords(char *begin) {
     wordDescriptor readWord;
 
     int counter = 0;
-    while (getWord(begin, &readWord))
+    while (getWord(begin, &readWord)) {
         if (isPalindromeWord(readWord))
             counter++;
+
+        begin = readWord.end;
+    }
 
     return counter;
 }
@@ -349,17 +383,12 @@ void reverseString(char *begin) {
         *begin++ = ' ';
 
         search -= readWord.end - readWord.begin + 1;
-        search = findNonSpaceReverse_(search, stringBuffer - 1);
     }
 
     *(--begin) = '\0';
 }
 
 /********************************************************* 11 *********************************************************/
-
-void printWordBeforeFirstWordWithA (char *s) {
-
-}
 
 /********************************************************* 12 *********************************************************/
 
@@ -369,7 +398,7 @@ void printWordBeforeFirstWordWithA (char *s) {
 
 /********************************************************* 15 *********************************************************/
 
-void getStringWithoutSameLastWord(char *begin) {
+void getStringWithoutSameLastWord(char *begin) { //делай предыдущие задания, олух.
     char *end = getEndOfString(begin);
 
     wordDescriptor needDelete;
@@ -392,8 +421,6 @@ void getStringWithoutSameLastWord(char *begin) {
 
 /********************************************************* 16 *********************************************************/
 
-
-
 /********************************************************* 17 *********************************************************/
 
 void deletePalindromeWords(char *begin) {
@@ -413,7 +440,7 @@ void deletePalindromeWords(char *begin) {
 
 /********************************************************* 18 *********************************************************/
 
-void addWordsToSmallerString_Core(char *fbegin, char *sbegin, size_t fSize, size_t sSize) {
+void addWordsToSmallerString_Core(char *fbegin, char *sbegin, size_t fSize, size_t sSize) { //делай предыдущие задания, олух.
     wordDescriptor readWord;
 
     size_t different = fSize - sSize;
@@ -422,7 +449,6 @@ void addWordsToSmallerString_Core(char *fbegin, char *sbegin, size_t fSize, size
         getWordReverse(search, fbegin - 1, &readWord);
 
         search -= readWord.end - readWord.begin + 1;
-        search = findNonSpaceReverse_(search, fbegin - 1);
     }
 
     char *endSbegin = getEndOfString(sbegin);
@@ -432,24 +458,17 @@ void addWordsToSmallerString_Core(char *fbegin, char *sbegin, size_t fSize, size
 }
 
 void addWordsToSmallerString(char *fbegin, char *sbegin) {
-    wordDescriptor w1;
+    size_t fSize = countWords(fbegin);
+    size_t sSize = countWords(sbegin);
 
-    size_t fSize = 0;
-    fSize += getWord(fbegin, &w1);
-
-    size_t sSize = 0;
-    sSize += getWord(sbegin, &w1);
+    if (fSize == sSize)
+        return;
 
     if (fSize > sSize)
         addWordsToSmallerString_Core(fbegin, sbegin, sSize, fSize);
-    else if (fSize < sSize)
-        addWordsToSmallerString_Core(sbegin, fbegin, fSize, sSize);
     else
-        return;
+        addWordsToSmallerString_Core(sbegin, fbegin, fSize, sSize);
 }
 
 /********************************************************* 19 *********************************************************/
 
-bool holabola(char *begin, char *symbols) {
-
-}
