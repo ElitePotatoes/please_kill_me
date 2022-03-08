@@ -443,7 +443,7 @@ void wordDescriptorToString(wordDescriptor word, char *destination) {
     *end = '\0';
 }
 
-wordDescriptor lastSameWordInFirstStringInSecondString(char *fbegin, char *sbegin) {
+wordDescriptor lastSameWordInFirstAndSecondString(char *fbegin, char *sbegin) {
     bagOfWords fbag;
     getBagOfWords(&fbag, fbegin);
 
@@ -533,7 +533,7 @@ void getStringWithoutSameLastWord(char *begin) {
 
 /********************************************************* 16 *********************************************************/
 
-wordDescriptor firstWordBeforeSameWordInFirstStringAndSecondString(char *fbegin, char *sbegin) {
+wordDescriptor firstWordBeforeSameInFirstAndSecondString(char *fbegin, char *sbegin) {
     bagOfWords fbag;
     getBagOfWords(&fbag, fbegin);
 
@@ -607,3 +607,11 @@ void addWordsToSmallerString(char *fbegin, char *sbegin) {
 
 /********************************************************* 19 *********************************************************/
 
+bool allWordSymbolsInString(char *begin, wordDescriptor word) {
+    char *end = getEndOfString(begin);
+    while (word.begin < word.end)
+        if (*find_(begin, end, *word.begin++) != *word.begin)
+            return false;
+
+    return true;
+}
