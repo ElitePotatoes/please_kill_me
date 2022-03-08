@@ -181,7 +181,7 @@ void printWordBeforeFirstWordWithA(char *begin);
 void wordDescriptorToString(wordDescriptor word, char *destination);
 
 //---определяет последнее из слов первой строки, которое есть во второй строке.
-wordDescriptor lastWordInFirstStringInSecondString(char *fbegin, char *sbegin);
+wordDescriptor lastSameWordInFirstStringInSecondString(char *fbegin, char *sbegin);
 
 //---определяет, есть ли в данной строке пара слов, составленных из одинаковых букв.
 bool stringContainsSameWordsWithSameSymbols(char *begin);
@@ -191,6 +191,10 @@ bool stringContainsSameWords(char *begin);
 
 //получаем строку из слов данной строки, которые отличны от последнего слова.
 void getStringWithoutSameLastWord(char *begin);
+
+//---даны две строки 𝑠1 и 𝑠2. Пусть 𝑤 – первое из слов строки 𝑠1, которое есть
+//и в строке 𝑠2. Найти слово, предшествующее первому вхождению 𝑤 в 𝑠1.
+wordDescriptor firstWordBeforeSameWordInFirstStringAndSecondString(char *fbegin, char *sbegin);
 
 //удаляет из данной строки слова-палиндромы.
 void deletePalindromeWords(char *begin);

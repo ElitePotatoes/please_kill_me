@@ -443,7 +443,7 @@ void wordDescriptorToString(wordDescriptor word, char *destination) {
     *end = '\0';
 }
 
-wordDescriptor lastWordInFirstStringInSecondString(char *fbegin, char *sbegin) {
+wordDescriptor lastSameWordInFirstStringInSecondString(char *fbegin, char *sbegin) {
     bagOfWords fbag;
     getBagOfWords(&fbag, fbegin);
 
@@ -460,7 +460,8 @@ wordDescriptor lastWordInFirstStringInSecondString(char *fbegin, char *sbegin) {
                 return word;
             }
 
-    //А что возвращать в ином случае?
+    fprintf(stderr,"Strings not contains same word\n");
+    exit(1);
 }
 
 /********************************************************* 13 *********************************************************/
@@ -509,7 +510,7 @@ bool stringContainsSameWordsWithSameSymbols(char *begin) {
 
 /********************************************************* 15 *********************************************************/
 
-void getStringWithoutSameLastWord(char *begin) { //делай предыдущие задания, олух.
+void getStringWithoutSameLastWord(char *begin) {
     char *end = getEndOfString(begin);
 
     wordDescriptor needDelete;
@@ -532,6 +533,29 @@ void getStringWithoutSameLastWord(char *begin) { //делай предыдущи
 
 /********************************************************* 16 *********************************************************/
 
+wordDescriptor firstWordBeforeSameWordInFirstStringAndSecondString(char *fbegin, char *sbegin) {
+    bagOfWords fbag;
+    getBagOfWords(&fbag, fbegin);
+
+    bagOfWords sbag;
+    getBagOfWords(&sbag, sbegin);
+
+    wordDescriptor word;
+    for (size_t i = 0; i < fbag.size; --i)
+        for (size_t j = 0; j < sbag.size; ++j)
+            if (areWordsEqual(fbag.words[i], sbag.words[i]) == 0) {
+                if (i >= 1)
+                    return fbag.words[i - 1];
+                else {
+                    fprintf(stderr,"String not contains word before first entry\n");
+                    exit(1);
+                }
+            }
+
+    fprintf(stderr,"Strings not contains same word\n");
+    exit(1);
+}
+
 /********************************************************* 17 *********************************************************/
 
 void deletePalindromeWords(char *begin) {
@@ -551,7 +575,7 @@ void deletePalindromeWords(char *begin) {
 
 /********************************************************* 18 *********************************************************/
 
-void addWordsToSmallerString_Core(char *fbegin, char *sbegin, size_t fSize, size_t sSize) { //делай предыдущие задания, олух.
+void addWordsToSmallerString_Core(char *fbegin, char *sbegin, size_t fSize, size_t sSize) {
     wordDescriptor readWord;
 
     size_t different = fSize - sSize;
