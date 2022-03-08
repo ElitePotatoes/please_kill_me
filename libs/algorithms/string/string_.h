@@ -183,6 +183,9 @@ void wordDescriptorToString(wordDescriptor word, char *destination);
 //---определяет последнее из слов первой строки, которое есть во второй строке.
 wordDescriptor lastWordInFirstStringInSecondString(char *fbegin, char *sbegin);
 
+//---определяет, есть ли в данной строке пара слов, составленных из одинаковых букв.
+bool stringContainsSameWordsWithSameSymbols(char *begin);
+
 //---определяет, есть ли в данной строке одинаковые слова.
 bool stringContainsSameWords(char *begin);
 

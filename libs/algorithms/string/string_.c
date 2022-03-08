@@ -469,7 +469,7 @@ bool stringContainsSameWords(char *begin) {
     bagOfWords bag;
     getBagOfWords(&bag, begin);
 
-    for (size_t i = 0; i < bag.size; ++i)
+    for (size_t i = 0; i < bag.size - 1; ++i)
         for (size_t j = i + 1; j < bag.size; ++j)
             if (areWordsEqual(bag.words[i], bag.words[j]) == 0)
                 return true;
@@ -478,6 +478,34 @@ bool stringContainsSameWords(char *begin) {
 }
 
 /********************************************************* 14 *********************************************************/
+
+char compare_char(const void *a, const void *b) {
+    char arg1 = *(const char *) a;
+    char arg2 = *(const char *) b;
+    if (arg1 < arg2)
+        return -1;
+
+    if (arg1 > arg2)
+        return 1;
+
+    return 0;
+}
+
+bool stringContainsSameWordsWithSameSymbols(char *begin) {
+    copy_(begin, getEndOfString(begin), stringBuffer);
+
+    bagOfWords bag;
+    getBagOfWords(&bag, stringBuffer);
+    for (size_t i = 0; i < bag.size; ++i)
+        qsort(bag.words[i].begin, strlen_(bag.words[i].begin), sizeof(char), compare_char);
+
+    for (size_t i = 0; i < bag.size - 1; ++i)
+        for (size_t j = i + 1; j < bag.size; ++j)
+            if (areWordsEqual(bag.words[i], bag.words[j]) == 0)
+                return true;
+
+    return false;
+}
 
 /********************************************************* 15 *********************************************************/
 
