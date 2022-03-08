@@ -180,8 +180,11 @@ void printWordBeforeFirstWordWithA(char *begin);
 //---переводит WordDescriptor в char*.
 void wordDescriptorToString(wordDescriptor word, char *destination);
 
-//---Определить последнее из слов первой строки, которое есть во второй строке.
+//---определяет последнее из слов первой строки, которое есть во второй строке.
 wordDescriptor lastWordInFirstStringInSecondString(char *fbegin, char *sbegin);
+
+//---определяет, есть ли в данной строке одинаковые слова.
+bool stringContainsSameWords(char *begin);
 
 //получаем строку из слов данной строки, которые отличны от последнего слова.
 void getStringWithoutSameLastWord(char *begin);

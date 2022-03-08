@@ -453,7 +453,7 @@ wordDescriptor lastWordInFirstStringInSecondString(char *fbegin, char *sbegin) {
     wordDescriptor word;
     for (size_t i = fbag.size; i >= 0; --i)
         for (size_t j = 0; j < sbag.size; ++j)
-            if (strcmp_(fbag.words[i].begin, sbag.words[i].begin) == 0) {
+            if (areWordsEqual(fbag.words[i], sbag.words[i]) == 0) {
                 word.begin = fbag.words[i].begin;
                 word.end = fbag.words[i].end;
 
@@ -464,6 +464,18 @@ wordDescriptor lastWordInFirstStringInSecondString(char *fbegin, char *sbegin) {
 }
 
 /********************************************************* 13 *********************************************************/
+
+bool stringContainsSameWords(char *begin) {
+    bagOfWords bag;
+    getBagOfWords(&bag, begin);
+
+    for (size_t i = 0; i < bag.size; ++i)
+        for (size_t j = i + 1; j < bag.size; ++j)
+            if (areWordsEqual(bag.words[i], bag.words[j]) == 0)
+                return true;
+
+    return false;
+}
 
 /********************************************************* 14 *********************************************************/
 
