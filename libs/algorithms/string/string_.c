@@ -438,6 +438,31 @@ void printWordBeforeFirstWordWithA(char *begin) {
 
 /********************************************************* 12 *********************************************************/
 
+void wordDescriptorToString(wordDescriptor word, char *destination) {
+    char *end = copy_(word.begin, word.end, destination);
+    *end = '\0';
+}
+
+wordDescriptor lastWordInFirstStringInSecondString(char *fbegin, char *sbegin) {
+    bagOfWords fbag;
+    getBagOfWords(&fbag, fbegin);
+
+    bagOfWords sbag;
+    getBagOfWords(&sbag, sbegin);
+
+    wordDescriptor word;
+    for (size_t i = fbag.size; i >= 0; --i)
+        for (size_t j = 0; j < sbag.size; ++j)
+            if (strcmp_(fbag.words[i].begin, sbag.words[i].begin) == 0) {
+                word.begin = fbag.words[i].begin;
+                word.end = fbag.words[i].end;
+
+                return word;
+            }
+
+    //А что возвращать в ином случае?
+}
+
 /********************************************************* 13 *********************************************************/
 
 /********************************************************* 14 *********************************************************/

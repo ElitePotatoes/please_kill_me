@@ -177,6 +177,12 @@ void reverseString(char *begin);
 //---выводит слово данной строки, предшествующее первому из слов, содержащих букву "а".
 void printWordBeforeFirstWordWithA(char *begin);
 
+//---переводит WordDescriptor в char*.
+void wordDescriptorToString(wordDescriptor word, char *destination);
+
+//---Определить последнее из слов первой строки, которое есть во второй строке.
+wordDescriptor lastWordInFirstStringInSecondString(char *fbegin, char *sbegin);
+
 //получаем строку из слов данной строки, которые отличны от последнего слова.
 void getStringWithoutSameLastWord(char *begin);
 
