@@ -273,7 +273,7 @@ bool isOrderedWords(char *begin) {
 
 /********************************************************** 7 *********************************************************/
 
-int countWords(char *begin) {
+int getCountWords(char *begin) {
     wordDescriptor readWord;
 
     int counter = 0;
@@ -390,6 +390,52 @@ void reverseString(char *begin) {
 
 /********************************************************* 11 *********************************************************/
 
+char *findA(char *begin, const char *end) {
+    while (begin != end && *begin != 'a' && *begin != 'A')
+        begin++;
+
+    return begin;
+}
+
+void printWordBeforeFirstWordWithA(char *begin) {
+    if (getCountWords(begin) == 0) {
+        fprintf(stderr, "String not contains words\n");
+        exit(1);
+    }
+
+    char *end = getEndOfString(begin);
+    if (findA(begin, end) == end) {
+        fprintf(stderr, "String not contains A\n");
+        exit(1);
+    }
+
+    wordDescriptor previousWord;
+    getWord(begin, &previousWord);
+    char *searchA = findA(previousWord.begin, previousWord.end);
+    if (*searchA != 'a' && *searchA != 'A') {
+        fprintf(stderr, "First word contains A\n");
+        exit(1);
+    }
+
+    begin = previousWord.end;
+
+    wordDescriptor readWord;
+    while (getWord(begin, &readWord)) {
+        searchA = findA(readWord.begin, readWord.end);
+        if (*searchA == 'a' || *searchA == 'A') {
+            printf("This word before first word with A -> ");
+            outputWord(previousWord);
+
+            return;
+        }
+
+        previousWord.begin = readWord.begin;
+        previousWord.end = readWord.end;
+
+        begin = readWord.end;
+    }
+}
+
 /********************************************************* 12 *********************************************************/
 
 /********************************************************* 13 *********************************************************/
@@ -458,8 +504,8 @@ void addWordsToSmallerString_Core(char *fbegin, char *sbegin, size_t fSize, size
 }
 
 void addWordsToSmallerString(char *fbegin, char *sbegin) {
-    size_t fSize = countWords(fbegin);
-    size_t sSize = countWords(sbegin);
+    size_t fSize = getCountWords(fbegin);
+    size_t sSize = getCountWords(sbegin);
 
     if (fSize == sSize)
         return;

@@ -132,7 +132,7 @@ void reverseWords(char *begin);
 char spaceInsteadDigits(char *begin);
 
 //---возвращает количество слов в строке.
-int countWords(char *begin);
+int getCountWords(char *begin);
 
 //---заносит слова из строки в сумку.
 void getBagOfWords(bagOfWords *bag, char *begin);
@@ -173,6 +173,9 @@ char *getInterleavedString(char *fbegin, char *sbegin);
 //преобразует строку, расположенную на ленте памяти, начиная с адреса begin и заканчивая ноль-символом,
 //располагая каждое слово в обратном порядке.
 void reverseString(char *begin);
+
+//---выводит слово данной строки, предшествующее первому из слов, содержащих букву "а".
+void printWordBeforeFirstWordWithA(char *begin);
 
 //получаем строку из слов данной строки, которые отличны от последнего слова.
 void getStringWithoutSameLastWord(char *begin);
