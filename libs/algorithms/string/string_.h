@@ -108,15 +108,6 @@ bool getWordReverse(char *rbegin, const char *rend, wordDescriptor *word);
 //преобразует слово word, чтобы его цифры были перенесены в начало в той же последовательности.
 void digitToStart(wordDescriptor word);
 
-//преобразует слово word, чтобы его цифры были перенесены в начало в обратной последовательности.
-void reverseDigitToStart(wordDescriptor word);
-
-//преобразует слово word, чтобы его цифры были перенесены в конец в той же последовательности.
-void digitToEnd(wordDescriptor word);
-
-//преобразует слово word, чтобы его цифры были перенесены в конец в обратной последовательности.
-void reverseDigitToEnd(wordDescriptor word);
-
 //записывает по адресу beginDestination фрагмент памяти, начиная с адреса rbeginSource до rendSource.
 //Возвращает указатель на следующий свободный фрагмент памяти в destination.
 char *copyReverse(char *rbeginSource, const char *rendSource, char *beginDestination);
@@ -165,7 +156,7 @@ int getCountPalindromeWords(char *begin);
 
 //возвращает значение 'true', если строка пустая, расположенная на ленте памяти,
 //начиная с адреса begin и заканчивая ноль-символом, иначе - 'false'.
-bool isEmptyString(char *begin);
+bool isEmptyStringWithoutWords(char *begin);
 
 //---преобразует строку, изменяя порядок следования слов в строке на обратный.
 char *getInterleavedString(char *fbegin, char *sbegin);
@@ -201,7 +192,7 @@ void deletePalindromeWords(char *begin);
 
 //---дополняет строку, содержащую меньшее количество слов, последними словами строки,
 //в которой содержится большее количество слов.
-void addWordsToSmallerString_Core(char *fbegin, char *sbegin, size_t fSize, size_t sSize);
+void addWordsToSmallerString_Core(char *fbegin, char *sbegin, bagOfWords fbag, bagOfWords sbag);
 
 //---дополняет строку, содержащую меньшее количество слов, последними словами строки,
 //в которой содержится большее количество слов.
