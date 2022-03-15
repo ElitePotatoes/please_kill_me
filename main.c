@@ -10,12 +10,12 @@
 #include <memory.h>
 #include <assert.h>
 
-#include "libs/algorithms/string/test/test_string.h"
+#include "libs/experiments/core_exp/experiments.h"
 
 int main() {
     //SetConsoleOutputCP (CP_UTF8);
 
-    test_string();
+    time_experiment();
 
     return 0;
 }
