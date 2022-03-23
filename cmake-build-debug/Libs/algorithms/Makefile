@@ -177,6 +177,54 @@ array/array.c.s:
 	cd /d C:\Users\elite\CLionProjects\main\cmake-build-debug && $(MAKE) $(MAKESILENT) -f Libs\algorithms\CMakeFiles\algorithms.dir\build.make Libs/algorithms/CMakeFiles/algorithms.dir/array/array.c.s
 .PHONY : array/array.c.s
 
+string/string_.obj: string/string_.c.obj
+.PHONY : string/string_.obj
+
+# target to build an object file
+string/string_.c.obj:
+	cd /d C:\Users\elite\CLionProjects\main\cmake-build-debug && $(MAKE) $(MAKESILENT) -f Libs\algorithms\CMakeFiles\algorithms.dir\build.make Libs/algorithms/CMakeFiles/algorithms.dir/string/string_.c.obj
+.PHONY : string/string_.c.obj
+
+string/string_.i: string/string_.c.i
+.PHONY : string/string_.i
+
+# target to preprocess a source file
+string/string_.c.i:
+	cd /d C:\Users\elite\CLionProjects\main\cmake-build-debug && $(MAKE) $(MAKESILENT) -f Libs\algorithms\CMakeFiles\algorithms.dir\build.make Libs/algorithms/CMakeFiles/algorithms.dir/string/string_.c.i
+.PHONY : string/string_.c.i
+
+string/string_.s: string/string_.c.s
+.PHONY : string/string_.s
+
+# target to generate assembly for a file
+string/string_.c.s:
+	cd /d C:\Users\elite\CLionProjects\main\cmake-build-debug && $(MAKE) $(MAKESILENT) -f Libs\algorithms\CMakeFiles\algorithms.dir\build.make Libs/algorithms/CMakeFiles/algorithms.dir/string/string_.c.s
+.PHONY : string/string_.c.s
+
+string/test/test_string.obj: string/test/test_string.c.obj
+.PHONY : string/test/test_string.obj
+
+# target to build an object file
+string/test/test_string.c.obj:
+	cd /d C:\Users\elite\CLionProjects\main\cmake-build-debug && $(MAKE) $(MAKESILENT) -f Libs\algorithms\CMakeFiles\algorithms.dir\build.make Libs/algorithms/CMakeFiles/algorithms.dir/string/test/test_string.c.obj
+.PHONY : string/test/test_string.c.obj
+
+string/test/test_string.i: string/test/test_string.c.i
+.PHONY : string/test/test_string.i
+
+# target to preprocess a source file
+string/test/test_string.c.i:
+	cd /d C:\Users\elite\CLionProjects\main\cmake-build-debug && $(MAKE) $(MAKESILENT) -f Libs\algorithms\CMakeFiles\algorithms.dir\build.make Libs/algorithms/CMakeFiles/algorithms.dir/string/test/test_string.c.i
+.PHONY : string/test/test_string.c.i
+
+string/test/test_string.s: string/test/test_string.c.s
+.PHONY : string/test/test_string.s
+
+# target to generate assembly for a file
+string/test/test_string.c.s:
+	cd /d C:\Users\elite\CLionProjects\main\cmake-build-debug && $(MAKE) $(MAKESILENT) -f Libs\algorithms\CMakeFiles\algorithms.dir\build.make Libs/algorithms/CMakeFiles/algorithms.dir/string/test/test_string.c.s
+.PHONY : string/test/test_string.c.s
+
 # Help Target
 help:
 	@echo The following are some of the valid targets for this Makefile:
@@ -192,6 +240,12 @@ help:
 	@echo ... array/array.obj
 	@echo ... array/array.i
 	@echo ... array/array.s
+	@echo ... string/string_.obj
+	@echo ... string/string_.i
+	@echo ... string/string_.s
+	@echo ... string/test/test_string.obj
+	@echo ... string/test/test_string.i
+	@echo ... string/test/test_string.s
 .PHONY : help
 
 

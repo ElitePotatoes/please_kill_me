@@ -8,7 +8,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_C
-  "C:/Users/elite/CLionProjects/main/libs/discrete_mathematics/first_laboratory_work/sets.c" "C:/Users/elite/CLionProjects/main/cmake-build-debug/CMakeFiles/course.dir/libs/discrete_mathematics/first_laboratory_work/sets.c.obj"
+  "C:/Users/elite/CLionProjects/main/libs/experiments/core_exp/experiments.c" "C:/Users/elite/CLionProjects/main/cmake-build-debug/CMakeFiles/course.dir/libs/experiments/core_exp/experiments.c.obj"
   "C:/Users/elite/CLionProjects/main/main.c" "C:/Users/elite/CLionProjects/main/cmake-build-debug/CMakeFiles/course.dir/main.c.obj"
   )
 set(CMAKE_C_COMPILER_ID "GNU")
@@ -26,6 +26,7 @@ set(CMAKE_TARGET_LINKED_INFO_FILES
   "C:/Users/elite/CLionProjects/main/cmake-build-debug/Libs/data_structures/CMakeFiles/data_structures.dir/DependInfo.cmake"
   "C:/Users/elite/CLionProjects/main/cmake-build-debug/Libs/algorithms/CMakeFiles/algorithms.dir/DependInfo.cmake"
   "C:/Users/elite/CLionProjects/main/cmake-build-debug/Libs/discrete_mathematics/CMakeFiles/discrete_mathematics.dir/DependInfo.cmake"
+  "C:/Users/elite/CLionProjects/main/cmake-build-debug/Libs/experiments/CMakeFiles/experiments.dir/DependInfo.cmake"
   )
 
 # Fortran module output directory.

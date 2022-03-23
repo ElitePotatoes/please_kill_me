@@ -1,1 +1,1 @@
- Libs/data_structures/libdata_structures.a Libs/algorithms/libalgorithms.a Libs/discrete_mathematics/libdiscrete_mathematics.a -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32 
+ Libs/data_structures/libdata_structures.a Libs/algorithms/libalgorithms.a Libs/discrete_mathematics/libdiscrete_mathematics.a Libs/experiments/libexperiments.a -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32 

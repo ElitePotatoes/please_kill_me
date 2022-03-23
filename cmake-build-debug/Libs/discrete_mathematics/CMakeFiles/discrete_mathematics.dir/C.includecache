@@ -6,11 +6,11 @@
 
 #IncludeRegexTransform: 
 
-C:/Users/elite/CLionProjects/Lab/libs/discrete_mathematics/lab_0/sets.c
+C:/Users/elite/CLionProjects/main/libs/discrete_mathematics/first_laboratory_work/sets.c
 sets.h
-C:/Users/elite/CLionProjects/Lab/libs/discrete_mathematics/lab_0/sets.h
+C:/Users/elite/CLionProjects/main/libs/discrete_mathematics/first_laboratory_work/sets.h
 
-C:/Users/elite/CLionProjects/Lab/libs/discrete_mathematics/lab_0/sets.h
+C:/Users/elite/CLionProjects/main/libs/discrete_mathematics/first_laboratory_work/sets.h
 stdio.h
 -
 stdbool.h

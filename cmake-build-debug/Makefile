@@ -167,29 +167,42 @@ discrete_mathematics/fast:
 	$(MAKE) $(MAKESILENT) -f Libs\discrete_mathematics\CMakeFiles\discrete_mathematics.dir\build.make Libs/discrete_mathematics/CMakeFiles/discrete_mathematics.dir/build
 .PHONY : discrete_mathematics/fast
 
-libs/discrete_mathematics/first_laboratory_work/sets.obj: libs/discrete_mathematics/first_laboratory_work/sets.c.obj
-.PHONY : libs/discrete_mathematics/first_laboratory_work/sets.obj
+#=============================================================================
+# Target rules for targets named experiments
+
+# Build rule for target.
+experiments: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 experiments
+.PHONY : experiments
+
+# fast build rule for target.
+experiments/fast:
+	$(MAKE) $(MAKESILENT) -f Libs\experiments\CMakeFiles\experiments.dir\build.make Libs/experiments/CMakeFiles/experiments.dir/build
+.PHONY : experiments/fast
+
+libs/experiments/core_exp/experiments.obj: libs/experiments/core_exp/experiments.c.obj
+.PHONY : libs/experiments/core_exp/experiments.obj
 
 # target to build an object file
-libs/discrete_mathematics/first_laboratory_work/sets.c.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\course.dir\build.make CMakeFiles/course.dir/libs/discrete_mathematics/first_laboratory_work/sets.c.obj
-.PHONY : libs/discrete_mathematics/first_laboratory_work/sets.c.obj
+libs/experiments/core_exp/experiments.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\course.dir\build.make CMakeFiles/course.dir/libs/experiments/core_exp/experiments.c.obj
+.PHONY : libs/experiments/core_exp/experiments.c.obj
 
-libs/discrete_mathematics/first_laboratory_work/sets.i: libs/discrete_mathematics/first_laboratory_work/sets.c.i
-.PHONY : libs/discrete_mathematics/first_laboratory_work/sets.i
+libs/experiments/core_exp/experiments.i: libs/experiments/core_exp/experiments.c.i
+.PHONY : libs/experiments/core_exp/experiments.i
 
 # target to preprocess a source file
-libs/discrete_mathematics/first_laboratory_work/sets.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\course.dir\build.make CMakeFiles/course.dir/libs/discrete_mathematics/first_laboratory_work/sets.c.i
-.PHONY : libs/discrete_mathematics/first_laboratory_work/sets.c.i
+libs/experiments/core_exp/experiments.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\course.dir\build.make CMakeFiles/course.dir/libs/experiments/core_exp/experiments.c.i
+.PHONY : libs/experiments/core_exp/experiments.c.i
 
-libs/discrete_mathematics/first_laboratory_work/sets.s: libs/discrete_mathematics/first_laboratory_work/sets.c.s
-.PHONY : libs/discrete_mathematics/first_laboratory_work/sets.s
+libs/experiments/core_exp/experiments.s: libs/experiments/core_exp/experiments.c.s
+.PHONY : libs/experiments/core_exp/experiments.s
 
 # target to generate assembly for a file
-libs/discrete_mathematics/first_laboratory_work/sets.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\course.dir\build.make CMakeFiles/course.dir/libs/discrete_mathematics/first_laboratory_work/sets.c.s
-.PHONY : libs/discrete_mathematics/first_laboratory_work/sets.c.s
+libs/experiments/core_exp/experiments.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\course.dir\build.make CMakeFiles/course.dir/libs/experiments/core_exp/experiments.c.s
+.PHONY : libs/experiments/core_exp/experiments.c.s
 
 main.obj: main.c.obj
 .PHONY : main.obj
@@ -227,9 +240,10 @@ help:
 	@echo ... course
 	@echo ... data_structures
 	@echo ... discrete_mathematics
-	@echo ... libs/discrete_mathematics/first_laboratory_work/sets.obj
-	@echo ... libs/discrete_mathematics/first_laboratory_work/sets.i
-	@echo ... libs/discrete_mathematics/first_laboratory_work/sets.s
+	@echo ... experiments
+	@echo ... libs/experiments/core_exp/experiments.obj
+	@echo ... libs/experiments/core_exp/experiments.i
+	@echo ... libs/experiments/core_exp/experiments.s
 	@echo ... main.obj
 	@echo ... main.i
 	@echo ... main.s

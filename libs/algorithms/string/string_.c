@@ -561,18 +561,6 @@ void addWordsToSmallerString_Core(char *fbegin, char *sbegin, bagOfWords fbag, b
     }
 
     *endS = '\0';*/
-
-    /*char *s_end = getEndOfString(sbegin);
-    *s_end++ = ' ';
-
-    for (size_t i = sbag.size; i < fbag.size - 1; ++i) {
-        s_end = copy_(fbag.words[sbag.size + 1].begin, fbag.words[sbag.size + 1].end, sbegin);
-        sbag.size++;
-
-        s_end++;
-    }
-
-    *(--s_end) = '\0';*/
 }
 
 void addWordsToSmallerString(char *fbegin, char *sbegin) {

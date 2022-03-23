@@ -369,7 +369,7 @@ int getNSpecialElement(matrix const m) {
 
         criteriaArray[j] = getSum(subArray, m.nRows);
     }
-                                                    //{17, 10, 12, 13}
+
     int counter = 0;
     for (size_t j = 0; j < m.nCols; ++j)
         for (size_t i = 0; i < m.nRows; ++i)
@@ -433,11 +433,8 @@ void printMatrixWithMaxZeroRows(matrix ms[], const size_t nMatrix) {
 
 int absoluteNorm(matrix const m) {
     int norm = abs(m.values[0][0]);
-    for (size_t i = 0; i < m.nRows; ++i) {
-        int max = abs(getMax(m.values[i], m.nCols));
-        if (norm < max)
-            norm = max;
-    }
+    for (size_t i = 0; i < m.nRows; ++i)
+        norm = max2(norm, abs(getMax(m.values[i], m.nCols)));
 
     return norm;
 }

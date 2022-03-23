@@ -8,7 +8,7 @@
 void inputArray(int a[], size_t size);
 
 //вывод массива a размера size.
-void outputArray(const int a[], size_t size);
+void output_array(const int *array, const size_t size);
 
 //возвращает значение первого вхождения элемента x в массиве a размера size при его наличии, иначе - size.
 int linearSearch(const int a[], size_t size, int x);
@@ -71,6 +71,9 @@ long long getSum(const int a[], size_t size);
 //возвращает значение 'истина', если в массиве а размера size нет одинаковых элементов, иначе - 'ложь'.
 bool isUnique(const int a[], size_t size);
 
+//возвращает значение 'истина', если массив аrray размера size отсортирован по возрастанию, иначе - 'ложь'.
+bool is_ordered(const int *array, const size_t size);
+
 //возвращает расстаояние до начала координат массива a размера size.
 double getDistanceArray(const int a[], size_t size);
 
@@ -89,5 +92,12 @@ int compare_ints(const void *a, const void *b);
 
 //компанатор переменных типа long long для qsort.
 int cmp_long_long(const void *pa, const void *pb);
+
+
+//перемешивает элементы массива array размера size.
+void shuffle_array(int *array, size_t size);
+
+//передаёт адресу min - минимальное значение в массиве array размера size, а max - максимальное значение.
+void get_min_maxS(const int *array, size_t size, int *min, int *max, long long countComparison);
 
 #endif //INC_ARRAY_H

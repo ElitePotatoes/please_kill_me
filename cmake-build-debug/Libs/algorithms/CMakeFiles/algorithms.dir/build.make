@@ -91,19 +91,49 @@ Libs/algorithms/CMakeFiles/algorithms.dir/array/array.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/algorithms.dir/array/array.c.s"
 	cd /d C:\Users\elite\CLionProjects\main\cmake-build-debug\Libs\algorithms && C:\PROGRA~2\MINGW-~1\I686-8~1.0-P\mingw32\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S C:\Users\elite\CLionProjects\main\libs\algorithms\array\array.c -o CMakeFiles\algorithms.dir\array\array.c.s
 
+Libs/algorithms/CMakeFiles/algorithms.dir/string/string_.c.obj: Libs/algorithms/CMakeFiles/algorithms.dir/flags.make
+Libs/algorithms/CMakeFiles/algorithms.dir/string/string_.c.obj: ../libs/algorithms/string/string_.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\elite\CLionProjects\main\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object Libs/algorithms/CMakeFiles/algorithms.dir/string/string_.c.obj"
+	cd /d C:\Users\elite\CLionProjects\main\cmake-build-debug\Libs\algorithms && C:\PROGRA~2\MINGW-~1\I686-8~1.0-P\mingw32\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles\algorithms.dir\string\string_.c.obj -c C:\Users\elite\CLionProjects\main\libs\algorithms\string\string_.c
+
+Libs/algorithms/CMakeFiles/algorithms.dir/string/string_.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/algorithms.dir/string/string_.c.i"
+	cd /d C:\Users\elite\CLionProjects\main\cmake-build-debug\Libs\algorithms && C:\PROGRA~2\MINGW-~1\I686-8~1.0-P\mingw32\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E C:\Users\elite\CLionProjects\main\libs\algorithms\string\string_.c > CMakeFiles\algorithms.dir\string\string_.c.i
+
+Libs/algorithms/CMakeFiles/algorithms.dir/string/string_.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/algorithms.dir/string/string_.c.s"
+	cd /d C:\Users\elite\CLionProjects\main\cmake-build-debug\Libs\algorithms && C:\PROGRA~2\MINGW-~1\I686-8~1.0-P\mingw32\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S C:\Users\elite\CLionProjects\main\libs\algorithms\string\string_.c -o CMakeFiles\algorithms.dir\string\string_.c.s
+
+Libs/algorithms/CMakeFiles/algorithms.dir/string/test/test_string.c.obj: Libs/algorithms/CMakeFiles/algorithms.dir/flags.make
+Libs/algorithms/CMakeFiles/algorithms.dir/string/test/test_string.c.obj: ../libs/algorithms/string/test/test_string.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\elite\CLionProjects\main\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building C object Libs/algorithms/CMakeFiles/algorithms.dir/string/test/test_string.c.obj"
+	cd /d C:\Users\elite\CLionProjects\main\cmake-build-debug\Libs\algorithms && C:\PROGRA~2\MINGW-~1\I686-8~1.0-P\mingw32\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles\algorithms.dir\string\test\test_string.c.obj -c C:\Users\elite\CLionProjects\main\libs\algorithms\string\test\test_string.c
+
+Libs/algorithms/CMakeFiles/algorithms.dir/string/test/test_string.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/algorithms.dir/string/test/test_string.c.i"
+	cd /d C:\Users\elite\CLionProjects\main\cmake-build-debug\Libs\algorithms && C:\PROGRA~2\MINGW-~1\I686-8~1.0-P\mingw32\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E C:\Users\elite\CLionProjects\main\libs\algorithms\string\test\test_string.c > CMakeFiles\algorithms.dir\string\test\test_string.c.i
+
+Libs/algorithms/CMakeFiles/algorithms.dir/string/test/test_string.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/algorithms.dir/string/test/test_string.c.s"
+	cd /d C:\Users\elite\CLionProjects\main\cmake-build-debug\Libs\algorithms && C:\PROGRA~2\MINGW-~1\I686-8~1.0-P\mingw32\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S C:\Users\elite\CLionProjects\main\libs\algorithms\string\test\test_string.c -o CMakeFiles\algorithms.dir\string\test\test_string.c.s
+
 # Object files for target algorithms
 algorithms_OBJECTS = \
 "CMakeFiles/algorithms.dir/algorithm.c.obj" \
-"CMakeFiles/algorithms.dir/array/array.c.obj"
+"CMakeFiles/algorithms.dir/array/array.c.obj" \
+"CMakeFiles/algorithms.dir/string/string_.c.obj" \
+"CMakeFiles/algorithms.dir/string/test/test_string.c.obj"
 
 # External object files for target algorithms
 algorithms_EXTERNAL_OBJECTS =
 
 Libs/algorithms/libalgorithms.a: Libs/algorithms/CMakeFiles/algorithms.dir/algorithm.c.obj
 Libs/algorithms/libalgorithms.a: Libs/algorithms/CMakeFiles/algorithms.dir/array/array.c.obj
+Libs/algorithms/libalgorithms.a: Libs/algorithms/CMakeFiles/algorithms.dir/string/string_.c.obj
+Libs/algorithms/libalgorithms.a: Libs/algorithms/CMakeFiles/algorithms.dir/string/test/test_string.c.obj
 Libs/algorithms/libalgorithms.a: Libs/algorithms/CMakeFiles/algorithms.dir/build.make
 Libs/algorithms/libalgorithms.a: Libs/algorithms/CMakeFiles/algorithms.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=C:\Users\elite\CLionProjects\main\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking C static library libalgorithms.a"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=C:\Users\elite\CLionProjects\main\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Linking C static library libalgorithms.a"
 	cd /d C:\Users\elite\CLionProjects\main\cmake-build-debug\Libs\algorithms && $(CMAKE_COMMAND) -P CMakeFiles\algorithms.dir\cmake_clean_target.cmake
 	cd /d C:\Users\elite\CLionProjects\main\cmake-build-debug\Libs\algorithms && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles\algorithms.dir\link.txt --verbose=$(VERBOSE)
 

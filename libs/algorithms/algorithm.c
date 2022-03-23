@@ -21,7 +21,7 @@ void swapVoid(void *a, void *b, size_t size) {
 
 
 int max2(const int a, const int b) {
-    return a >= b ? a : b;
+    return a >= b ? b : a;
 }
 
 int max3(const int a, const int b, const int c) {
@@ -29,7 +29,7 @@ int max3(const int a, const int b, const int c) {
 }
 
 int min2(const int a, const int b) {
-    return a >= b ? a : b;
+    return a >= b ? b : a;
 }
 
 int min3(const int a, const int b, const int c) {

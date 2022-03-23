@@ -6,9 +6,9 @@
 #include <stdbool.h>
 #include <time.h>
 
-#include "../random_generation_functions/random_generation_functions.h"
-#include "../sort_functions/sort_functions.h"
 #include "../../algorithms/array/array.h"
+#include "../sort_functions/sort_functions.h"
+#include "../random_generation_functions/random_generation_functions.h"
 
 //макрофункция, измеряющая количество времени работы функции code и записывающая результат в параметр time.
 #define TIME_TEST(functions, time) {                \

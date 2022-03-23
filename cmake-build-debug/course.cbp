@@ -5,7 +5,7 @@
 		<Option title="course"/>
 		<Option makefile_is_custom="1"/>
 		<Option compiler="gcc"/>
-		<Option virtualFolders="CMake Files\;CMake Files\libs\;CMake Files\libs\algorithms\;CMake Files\libs\data_structures\;CMake Files\libs\discrete_mathematics\;"/>
+		<Option virtualFolders="CMake Files\;CMake Files\libs\;CMake Files\libs\algorithms\;CMake Files\libs\data_structures\;CMake Files\libs\discrete_mathematics\;CMake Files\libs\experiments\;"/>
 		<Build>
 			<Target title="all">
 				<Option working_dir="C:/Users/elite/CLionProjects/main/cmake-build-debug"/>
@@ -181,6 +181,42 @@
 					<DistClean command="C:/PROGRA~2/MINGW-~1/I686-8~1.0-P/mingw32/bin/mingw32-make.exe -f &quot;C:/Users/elite/CLionProjects/main/cmake-build-debug/Libs/discrete_mathematics/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
+			<Target title="experiments">
+				<Option output="C:/Users/elite/CLionProjects/main/cmake-build-debug/Libs/experiments/libexperiments.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="C:/Users/elite/CLionProjects/main/cmake-build-debug/Libs/experiments"/>
+				<Option object_output="./"/>
+				<Option type="2"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="C:/Program Files (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/../lib/gcc/i686-w64-mingw32/8.1.0/include"/>
+					<Add directory="C:/Program Files (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/../lib/gcc/i686-w64-mingw32/8.1.0/include-fixed"/>
+					<Add directory="C:/Program Files (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/../lib/gcc/i686-w64-mingw32/8.1.0/../../../../i686-w64-mingw32/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="C:/PROGRA~2/MINGW-~1/I686-8~1.0-P/mingw32/bin/mingw32-make.exe -f &quot;C:/Users/elite/CLionProjects/main/cmake-build-debug/Libs/experiments/Makefile&quot;  VERBOSE=1 experiments"/>
+					<CompileFile command="C:/PROGRA~2/MINGW-~1/I686-8~1.0-P/mingw32/bin/mingw32-make.exe -f &quot;C:/Users/elite/CLionProjects/main/cmake-build-debug/Libs/experiments/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/PROGRA~2/MINGW-~1/I686-8~1.0-P/mingw32/bin/mingw32-make.exe -f &quot;C:/Users/elite/CLionProjects/main/cmake-build-debug/Libs/experiments/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/PROGRA~2/MINGW-~1/I686-8~1.0-P/mingw32/bin/mingw32-make.exe -f &quot;C:/Users/elite/CLionProjects/main/cmake-build-debug/Libs/experiments/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="experiments/fast">
+				<Option output="C:/Users/elite/CLionProjects/main/cmake-build-debug/Libs/experiments/libexperiments.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="C:/Users/elite/CLionProjects/main/cmake-build-debug/Libs/experiments"/>
+				<Option object_output="./"/>
+				<Option type="2"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="C:/Program Files (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/../lib/gcc/i686-w64-mingw32/8.1.0/include"/>
+					<Add directory="C:/Program Files (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/../lib/gcc/i686-w64-mingw32/8.1.0/include-fixed"/>
+					<Add directory="C:/Program Files (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/../lib/gcc/i686-w64-mingw32/8.1.0/../../../../i686-w64-mingw32/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="C:/PROGRA~2/MINGW-~1/I686-8~1.0-P/mingw32/bin/mingw32-make.exe -f &quot;C:/Users/elite/CLionProjects/main/cmake-build-debug/Libs/experiments/Makefile&quot;  VERBOSE=1 experiments/fast"/>
+					<CompileFile command="C:/PROGRA~2/MINGW-~1/I686-8~1.0-P/mingw32/bin/mingw32-make.exe -f &quot;C:/Users/elite/CLionProjects/main/cmake-build-debug/Libs/experiments/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/PROGRA~2/MINGW-~1/I686-8~1.0-P/mingw32/bin/mingw32-make.exe -f &quot;C:/Users/elite/CLionProjects/main/cmake-build-debug/Libs/experiments/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/PROGRA~2/MINGW-~1/I686-8~1.0-P/mingw32/bin/mingw32-make.exe -f &quot;C:/Users/elite/CLionProjects/main/cmake-build-debug/Libs/experiments/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
 		</Build>
 		<Unit filename="C:/Users/elite/CLionProjects/main/libs/algorithms/algorithm.c">
 			<Option target="algorithms"/>
@@ -192,6 +228,18 @@
 			<Option target="algorithms"/>
 		</Unit>
 		<Unit filename="C:/Users/elite/CLionProjects/main/libs/algorithms/array/array.h">
+			<Option target="algorithms"/>
+		</Unit>
+		<Unit filename="C:/Users/elite/CLionProjects/main/libs/algorithms/string/string_.c">
+			<Option target="algorithms"/>
+		</Unit>
+		<Unit filename="C:/Users/elite/CLionProjects/main/libs/algorithms/string/string_.h">
+			<Option target="algorithms"/>
+		</Unit>
+		<Unit filename="C:/Users/elite/CLionProjects/main/libs/algorithms/string/test/test_string.c">
+			<Option target="algorithms"/>
+		</Unit>
+		<Unit filename="C:/Users/elite/CLionProjects/main/libs/algorithms/string/test/test_string.h">
 			<Option target="algorithms"/>
 		</Unit>
 		<Unit filename="C:/Users/elite/CLionProjects/main/libs/data_structures/bitsets/bitsets.c">
@@ -230,22 +278,10 @@
 		<Unit filename="C:/Users/elite/CLionProjects/main/libs/data_structures/ordered_array_set/ordered_array_set.h">
 			<Option target="data_structures"/>
 		</Unit>
-		<Unit filename="C:/Users/elite/CLionProjects/main/libs/data_structures/ordered_array_set/test/test_ordered_array.c">
-			<Option target="data_structures"/>
-		</Unit>
-		<Unit filename="C:/Users/elite/CLionProjects/main/libs/data_structures/ordered_array_set/test/test_ordered_array.h">
-			<Option target="data_structures"/>
-		</Unit>
 		<Unit filename="C:/Users/elite/CLionProjects/main/libs/data_structures/point/point.c">
 			<Option target="data_structures"/>
 		</Unit>
 		<Unit filename="C:/Users/elite/CLionProjects/main/libs/data_structures/point/point.h">
-			<Option target="data_structures"/>
-		</Unit>
-		<Unit filename="C:/Users/elite/CLionProjects/main/libs/data_structures/unordered_array_set/test/test_unordered_array_set.c">
-			<Option target="data_structures"/>
-		</Unit>
-		<Unit filename="C:/Users/elite/CLionProjects/main/libs/data_structures/unordered_array_set/test/test_unordered_array_set.h">
 			<Option target="data_structures"/>
 		</Unit>
 		<Unit filename="C:/Users/elite/CLionProjects/main/libs/data_structures/unordered_array_set/unordered_array_set.c">
@@ -254,22 +290,10 @@
 		<Unit filename="C:/Users/elite/CLionProjects/main/libs/data_structures/unordered_array_set/unordered_array_set.h">
 			<Option target="data_structures"/>
 		</Unit>
-		<Unit filename="C:/Users/elite/CLionProjects/main/libs/data_structures/vector/vector/test/test_vector.c">
-			<Option target="data_structures"/>
-		</Unit>
-		<Unit filename="C:/Users/elite/CLionProjects/main/libs/data_structures/vector/vector/test/test_vector.h">
-			<Option target="data_structures"/>
-		</Unit>
 		<Unit filename="C:/Users/elite/CLionProjects/main/libs/data_structures/vector/vector/vector.c">
 			<Option target="data_structures"/>
 		</Unit>
 		<Unit filename="C:/Users/elite/CLionProjects/main/libs/data_structures/vector/vector/vector.h">
-			<Option target="data_structures"/>
-		</Unit>
-		<Unit filename="C:/Users/elite/CLionProjects/main/libs/data_structures/vector/vector_void/test/test_vector_void.c">
-			<Option target="data_structures"/>
-		</Unit>
-		<Unit filename="C:/Users/elite/CLionProjects/main/libs/data_structures/vector/vector_void/test/test_vector_void.h">
 			<Option target="data_structures"/>
 		</Unit>
 		<Unit filename="C:/Users/elite/CLionProjects/main/libs/data_structures/vector/vector_void/vector_void.c">
@@ -279,11 +303,30 @@
 			<Option target="data_structures"/>
 		</Unit>
 		<Unit filename="C:/Users/elite/CLionProjects/main/libs/discrete_mathematics/first_laboratory_work/sets.c">
-			<Option target="course"/>
 			<Option target="discrete_mathematics"/>
 		</Unit>
 		<Unit filename="C:/Users/elite/CLionProjects/main/libs/discrete_mathematics/first_laboratory_work/sets.h">
+			<Option target="discrete_mathematics"/>
+		</Unit>
+		<Unit filename="C:/Users/elite/CLionProjects/main/libs/experiments/core_exp/experiments.c">
 			<Option target="course"/>
+			<Option target="experiments"/>
+		</Unit>
+		<Unit filename="C:/Users/elite/CLionProjects/main/libs/experiments/core_exp/experiments.h">
+			<Option target="course"/>
+			<Option target="experiments"/>
+		</Unit>
+		<Unit filename="C:/Users/elite/CLionProjects/main/libs/experiments/random_generation_functions/random_generation_functions.c">
+			<Option target="experiments"/>
+		</Unit>
+		<Unit filename="C:/Users/elite/CLionProjects/main/libs/experiments/random_generation_functions/random_generation_functions.h">
+			<Option target="experiments"/>
+		</Unit>
+		<Unit filename="C:/Users/elite/CLionProjects/main/libs/experiments/sort_functions/sort_functions.c">
+			<Option target="experiments"/>
+		</Unit>
+		<Unit filename="C:/Users/elite/CLionProjects/main/libs/experiments/sort_functions/sort_functions.h">
+			<Option target="experiments"/>
 		</Unit>
 		<Unit filename="C:/Users/elite/CLionProjects/main/main.c">
 			<Option target="course"/>
@@ -302,6 +345,9 @@
 		</Unit>
 		<Unit filename="C:/Users/elite/CLionProjects/main/libs/discrete_mathematics/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\libs\discrete_mathematics\"/>
+		</Unit>
+		<Unit filename="C:/Users/elite/CLionProjects/main/libs/experiments/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\libs\experiments\"/>
 		</Unit>
 	</Project>
 </CodeBlocks_project_file>

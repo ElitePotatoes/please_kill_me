@@ -10,11 +10,11 @@ void inputArray(int a[], const size_t n) {
         scanf("%d", &a[i]);
 }
 
-void outputArray(const int a[], const size_t n) {
+void output_array(const int *array, const size_t size) {
     printf("{");
 
-    for (size_t i = 0; i < n; i++)
-        printf("%d, ", a[i]);
+    for (size_t i = 0; i < size; i++)
+        printf("%d, ", array[i]);
 
     printf("\b\b}\n");
 }
@@ -211,12 +211,22 @@ bool isUnique(const int a[], const size_t size) {
     return true;
 }
 
-int countNUnique(long long a[], const size_t size) { //7 7 8 8 8 9 9
+bool is_ordered(const int *array, const size_t size) {
+    if (size > 1)
+        for (size_t i = 0; i < size - 1; ++i)
+            if (array[i] > array [i + 1])
+                return false;
+
+    return true;
+}
+
+int countNUnique(long long a[], const size_t size) {
     qsort(a, size, sizeof(long long), cmp_long_long);
 
     int counter = 0;
-    for (size_t i = 0; i < size; ++i)
-        if (a[i] == a[i + 1] && a[i] != a[i - 1])
+    for (size_t i = 0; i < size - 1; ++i)
+        if (a[i] == a[i + 1] && a[i] != a[i - 1]
+            || a[i] != a[i - 1] && a[i] != a[i + 1] && i != 0)
             counter++;
 
     return counter;
@@ -263,4 +273,22 @@ int cmp_long_long(const void *pa, const void *pb) {
         return 1;
 
     return 0;
+}
+
+void shuffle_array(int *array, const size_t size) {
+    for (size_t i = 0; i < size; ++i)
+        swapVoid(&array[i], &array[(rand() % size)], sizeof(int));
+}
+
+void get_min_maxS(const int *array, const size_t size, int *min, int *max, long long countComparison) {
+    *min = array[0];
+    *max = array[0];
+    for (size_t i = 1; i < size; ++i) {
+        if (array[i] < *min)
+            *min = array[i];
+        else if (array[i] > *max)
+            *max = array[i];
+
+        countComparison += 3;
+    }
 }

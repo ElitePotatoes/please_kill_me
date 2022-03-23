@@ -78,33 +78,34 @@ CMakeFiles/course.dir/main.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/course.dir/main.c.s"
 	C:\PROGRA~2\MINGW-~1\I686-8~1.0-P\mingw32\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S C:\Users\elite\CLionProjects\main\main.c -o CMakeFiles\course.dir\main.c.s
 
-CMakeFiles/course.dir/libs/discrete_mathematics/first_laboratory_work/sets.c.obj: CMakeFiles/course.dir/flags.make
-CMakeFiles/course.dir/libs/discrete_mathematics/first_laboratory_work/sets.c.obj: ../libs/discrete_mathematics/first_laboratory_work/sets.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\elite\CLionProjects\main\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/course.dir/libs/discrete_mathematics/first_laboratory_work/sets.c.obj"
-	C:\PROGRA~2\MINGW-~1\I686-8~1.0-P\mingw32\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles\course.dir\libs\discrete_mathematics\first_laboratory_work\sets.c.obj -c C:\Users\elite\CLionProjects\main\libs\discrete_mathematics\first_laboratory_work\sets.c
+CMakeFiles/course.dir/libs/experiments/core_exp/experiments.c.obj: CMakeFiles/course.dir/flags.make
+CMakeFiles/course.dir/libs/experiments/core_exp/experiments.c.obj: ../libs/experiments/core_exp/experiments.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\elite\CLionProjects\main\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/course.dir/libs/experiments/core_exp/experiments.c.obj"
+	C:\PROGRA~2\MINGW-~1\I686-8~1.0-P\mingw32\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles\course.dir\libs\experiments\core_exp\experiments.c.obj -c C:\Users\elite\CLionProjects\main\libs\experiments\core_exp\experiments.c
 
-CMakeFiles/course.dir/libs/discrete_mathematics/first_laboratory_work/sets.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/course.dir/libs/discrete_mathematics/first_laboratory_work/sets.c.i"
-	C:\PROGRA~2\MINGW-~1\I686-8~1.0-P\mingw32\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E C:\Users\elite\CLionProjects\main\libs\discrete_mathematics\first_laboratory_work\sets.c > CMakeFiles\course.dir\libs\discrete_mathematics\first_laboratory_work\sets.c.i
+CMakeFiles/course.dir/libs/experiments/core_exp/experiments.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/course.dir/libs/experiments/core_exp/experiments.c.i"
+	C:\PROGRA~2\MINGW-~1\I686-8~1.0-P\mingw32\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E C:\Users\elite\CLionProjects\main\libs\experiments\core_exp\experiments.c > CMakeFiles\course.dir\libs\experiments\core_exp\experiments.c.i
 
-CMakeFiles/course.dir/libs/discrete_mathematics/first_laboratory_work/sets.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/course.dir/libs/discrete_mathematics/first_laboratory_work/sets.c.s"
-	C:\PROGRA~2\MINGW-~1\I686-8~1.0-P\mingw32\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S C:\Users\elite\CLionProjects\main\libs\discrete_mathematics\first_laboratory_work\sets.c -o CMakeFiles\course.dir\libs\discrete_mathematics\first_laboratory_work\sets.c.s
+CMakeFiles/course.dir/libs/experiments/core_exp/experiments.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/course.dir/libs/experiments/core_exp/experiments.c.s"
+	C:\PROGRA~2\MINGW-~1\I686-8~1.0-P\mingw32\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S C:\Users\elite\CLionProjects\main\libs\experiments\core_exp\experiments.c -o CMakeFiles\course.dir\libs\experiments\core_exp\experiments.c.s
 
 # Object files for target course
 course_OBJECTS = \
 "CMakeFiles/course.dir/main.c.obj" \
-"CMakeFiles/course.dir/libs/discrete_mathematics/first_laboratory_work/sets.c.obj"
+"CMakeFiles/course.dir/libs/experiments/core_exp/experiments.c.obj"
 
 # External object files for target course
 course_EXTERNAL_OBJECTS =
 
 course.exe: CMakeFiles/course.dir/main.c.obj
-course.exe: CMakeFiles/course.dir/libs/discrete_mathematics/first_laboratory_work/sets.c.obj
+course.exe: CMakeFiles/course.dir/libs/experiments/core_exp/experiments.c.obj
 course.exe: CMakeFiles/course.dir/build.make
 course.exe: Libs/data_structures/libdata_structures.a
 course.exe: Libs/algorithms/libalgorithms.a
 course.exe: Libs/discrete_mathematics/libdiscrete_mathematics.a
+course.exe: Libs/experiments/libexperiments.a
 course.exe: CMakeFiles/course.dir/linklibs.rsp
 course.exe: CMakeFiles/course.dir/objects1.rsp
 course.exe: CMakeFiles/course.dir/link.txt

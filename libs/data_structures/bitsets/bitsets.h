@@ -7,8 +7,8 @@
 #include <assert.h>
 
 typedef struct bitset {
-    uint32_t values;    // множество
-    uint32_t maxValue;  // максимальный элемент универсума
+    uint32_t values;    //множество
+    uint32_t maxValue;  //максимальный элемент универсума
 } bitset;
 
 //возвращает пустое множество c универсумом 0, 1,..., maxValue.

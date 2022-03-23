@@ -1,85 +1,129 @@
 #include "sort_functions.h"
 
-void bubble_sort(int *array, const size_t size) {
-    for (size_t i = 0; i < size; ++i)
-        for (size_t j = size - 1; j > i; --j)
+void bubble_sort(int *array, size_t n) {
+    long long countComparison = 0;
+    for (size_t i = 0; i < n - 1; ++i) {
+        countComparison++;
+        for (size_t j = n - 1; j > i; --j) {
+            countComparison++;
             if (array[j - 1] > array[j])
-                swapVoid(&array[j - 1], &array[j], sizeof(int));
+                swap(&array[j - 1], &array[j]);
+        }
+
+    }
+
+    printf("Coint of comparison: %lld\n", countComparison);
 }
 
 
 void shaker_sort(int *array, const size_t size) {
     size_t left = 0;
     size_t right = size - 1;
-    bool change = true;
-    while (left < right && change) {
-        change = false;
-        for (size_t i = 0; i < right; ++i) {
+    bool swapped = true;
+    long long countComparison = 0;
+    while (right - left > 0 && swapped) {
+        swapped = false;
+        for (size_t i = left; i < right; ++i) {
+            countComparison++;
             if (array[i] > array[i + 1]) {
                 swapVoid(&array[i], &array[i + 1], sizeof(int));
-                change = true;
+                swapped = true;
             }
         }
 
         right--;
         for (size_t i = right; i > left; --i) {
+            countComparison++;
             if (array[i] < array[i - 1]) {
                 swapVoid(&array[i], &array[i - 1], sizeof(int));
-                change = true;
+                swapped = true;
             }
         }
 
         left++;
     }
+
+    printf("Coint of comparison: %lld\n", countComparison);
 }
 
 
 void comb_sort(int *array, const size_t size) {
     size_t step = size;
     bool swapped = true;
+    long long countComparison = 0;
     while (step > 1 || swapped) {
-        if (step > 1)
+        if (step > 1) {
+            countComparison++;
             step /= 1.24733;
+        }
 
         swapped = false;
-        for (size_t i = 0, j = i + step; j < size; ++i, ++j)
+        for (size_t i = 0, j = i + step; j < size; ++i, ++j) {
+            countComparison++;
             if (array[i] > array[j]) {
+                countComparison++;
                 swapVoid(&array[i], &array[j], sizeof(int));
                 swapped = true;
             }
+        }
     }
+
+    printf("Coint of comparison: %lld\n", countComparison);
 }
 
 
 void selection_sort(int *array, const size_t size) {
     size_t min_index;
+    long long countComparison = 0;
     for (size_t i = 0; i < size - 1; ++i) {
         min_index = i;
-        for (size_t j = i + 1; j < size; ++j)
-            min_index = array[j] >= array[min_index] ? j : min_index;
+        for (size_t j = i + 1; j < size; ++j) {
+            countComparison++;
+            min_index = array[j] < array[min_index] ? j : min_index;
+        }
 
-        if (array[i] != array[min_index])
+        if (i != min_index)
             swapVoid(&array[i], &array[min_index], sizeof(int));
     }
+
+    printf("Coint of comparison: %lld\n", countComparison);
 }
 
 
 void intersection_sort(int *array, const size_t size) {
-    for (size_t i = 1; i < size; ++i)
-        for (size_t j = i; j > 0 && array[j] > array[j - 1]; --j)
-            swapVoid(&array[j], &array[j - 1], sizeof(int));
+    long long countComparison = 0;
+    for (size_t i = 1; i < size; i++) {
+        size_t j = i;
+        int readElement = array[i];
+        countComparison++;
+        while (j > 0 && readElement < array[j - 1]) {
+            countComparison++;
+            array[j] = array[j - 1];
+            j--;
+        }
+
+        array[j] = readElement;
+    }
+
+    printf("Coint of comparison: %lld\n", countComparison);
 }
 
 
 void shell_sort(int *array, const size_t size) {
+    long long countComparison = 0;
     for (size_t step = size / 2; step > 0; step /= 2) {
         int temp;
+        countComparison++;
         for (size_t i = step; i < size; i++) {
+            countComparison++;
             temp = array[i];
             size_t j;
             for (j = i; j >= step; j -= step) {
-                if (temp < array[j - step])
+                countComparison++;
+                if (temp < array[j - step]) {
+                    countComparison++;
                     array[j] = array[j - step];
+                }
                 else
                     break;
             }
@@ -87,145 +131,137 @@ void shell_sort(int *array, const size_t size) {
             array[j] = temp;
         }
     }
+
+    printf("Coint of comparison: %lld\n", countComparison);
 }
 
 
-void insert_heap(int *array, size_t *size, const int value) {
-    array[*(size)++] = value;
-    size_t child_index = *size - 1;
-    size_t parent_index = (child_index - 1) / 2;
-    while (array[child_index] < array[parent_index] && child_index != 0) {
-        swapVoid(&array[child_index], &array[parent_index], sizeof(int));
-        child_index = parent_index;
-        parent_index = (child_index - 1) / 2;
+void heapify(int *array, const size_t size, const size_t index, long long countComparison) {
+    size_t largest = index;
+    size_t left = 2 * index + 1;
+    size_t right = 2 * index + 2;
+    if (left < size && array[left] > array[largest]) {
+        countComparison += 2;
+        largest = left;
     }
-}
 
-bool has_left_child(const size_t parentIndex, const size_t size) {
-    return 2 * parentIndex + 1 < size;
-}
+    if (right < size && array[right] > array[largest]) {
+        countComparison += 2;
+        largest = right;
+    }
 
-bool has_right_child(const size_t parentIndex, const size_t size) {
-    return 2 * parentIndex + 2 < size;
-}
-
-size_t get_left_child_index(const size_t parentIndex) {
-    return 2 * parentIndex + 1;
-}
-
-size_t get_min_child_index(const int *array, const size_t size, const size_t parent_index) {
-    size_t min_child_index = get_left_child_index(parent_index);
-    size_t right_child_index = min_child_index + 1;
-    if (has_right_child(parent_index, size))
-        if (array[right_child_index] < array[min_child_index])
-            min_child_index = right_child_index;
-
-    return min_child_index;
-}
-
-void remove_min_heap(int *array, size_t *size) {
-    *size -= 1;
-    swapVoid(&array[0], &array[*size], sizeof(int));
-    size_t parent_index = 0;
-    while (has_left_child(parent_index, *size)) {
-        size_t min_child_index = get_min_child_index(array, *size, parent_index);
-        if (array[min_child_index] < array[parent_index]) {
-            swapVoid(&array[min_child_index], &array[parent_index], sizeof(int));
-            parent_index = min_child_index;
-        }
-        else
-            break;
+    if (largest != index) {
+        countComparison++;
+        swap(&array[index], &array[largest]);
+        heapify(array, size, largest, countComparison);
     }
 }
 
 void heap_sort(int *array, const size_t size) {
-    size_t heap_size = 0;
-    while (heap_size != size)
-        insert_heap(array, &heap_size, array[heap_size]);
-    while (heap_size)
-        remove_min_heap(array, &heap_size);
+    long long countComparison = 0;
+    for (size_t i = size / 2 - 1; i >= 0; --i) {
+        countComparison++;
+        heapify(array, size, i, countComparison);
+    }
+
+    for (size_t i = size - 1; i >= 0; --i) {
+        countComparison++;
+        swap(&array[0], &array[i]);
+        heapify(array, i, 0, countComparison);
+    }
+
+    printf("Coint of comparison: %lld\n", countComparison);
 }
 
 
 void count_sort(int *array, const size_t size) {
     int min, max;
-    get_min_max(array, size, &min, &max);
+    long long countComparison = 0;
+    get_min_maxS(array, size, &min, &max, countComparison);
 
     int k = max - min + 1;
-    int *buffer = (int *) malloc(sizeof(int) * k);
-    for (size_t i = 0; i < size; ++i)
+    int *buffer = (int *) calloc(k, sizeof(int));
+    for (size_t i = 0; i < size; ++i) {
+        countComparison++;
         buffer[array[i] - min]++;
+    }
 
     size_t ind = 0;
     for (size_t i = 0; i < k; ++i) {
+        countComparison++;
         int x = buffer[i];
-        for (size_t j = 0; j < x; ++j)
+        for (size_t j = 0; j < x; ++j) {
+            countComparison++;
             array[ind++] = min + i;
+        }
     }
+
+    printf("Coint of comparison: %lld\n", countComparison);
 
     free(buffer);
 }
 
 
-/*void bucket_sort(int *array, const size_t size) {
-    int max = array[0];
-    int min = array[0];
-    for (size_t i = 0; i < size; ++i) {
-        if (array[i] > max)
-            max = array[i];
-        else if (array[i] < min)
-            min = array[i];
+static void get_prefix_sum(int *array, const size_t size, long long countComparison) {
+    int prev = array[0];
+    *array = 0;
+    for (size_t i = 1; i < size; i++) {
+        countComparison++;
+        int t = array[i];
+        array[i] = prev + array[i - 1];
+        prev = t;
     }
-
-    int range = max - min;
-    for (size_t i = 0; i < size; ++i) {
-
-    }
-}*/
-
-
-/*int digit(int n, int k, int N, int M) {
-    return (n >> (N * k) & (M - 1));
-}
-
-void radixSort_(int *array, int *size) {
-    int byte = 8;
-    int k = (32 + byte - 1) / byte;
-    int M = 1 << byte;
-    int sz = size - array;
-    int *b = (int *) malloc(sizeof(int) * sz);
-    int *c = (int *) malloc(sizeof(int) * M);
-    for (int i = 0; i < k; i++) {
-        for (int j = 0; j < M; j++)
-            c[j] = 0;
-
-        for (int *j = array; j < size; j++)
-            c[digit(*j, i, byte, M)]++;
-
-        for (int j = 1; j < M; j++)
-            c[j] += c[j - 1];
-
-        for (int *j = size - 1; j >= array; j--)
-            b[--c[digit(*j, i, byte, M)]] = *j;
-
-        int cur = 0;
-        for (int *j = array; j < size; j++)
-            *j = b[cur++];
-    }
-    free(b);
-    free(c);
 }
 
 void radix_sort(int *array, const size_t size) {
-    radixSort_(array, array + size);
-}*/
+    int *buffer = (int *) calloc(size, sizeof(int));
+    long long countComparison = 0;
+
+    const int STEP = 8;
+    const int MASK = 0b11111111;
+    for (int byte = 0; byte < sizeof(int); ++byte) {
+        countComparison++;
+        int values[UCHAR_MAX + 1] = {0};
+        for (size_t i = 0; i < size; ++i) {
+            int curByte;
+            countComparison += 2;
+            if (byte + 1 == sizeof(int))
+                curByte = ((array[i] >> (byte * STEP)) + CHAR_MAX + 1) & MASK;
+            else
+                curByte = (array[i] >> (byte * STEP)) & MASK;
+
+            values[curByte]++;
+        }
+
+        get_prefix_sum(values, UCHAR_MAX + 1, countComparison);
+
+        for (size_t i = 0; i < size; ++i) {
+            int curByte;
+            countComparison += 2;
+            if (byte + 1 == sizeof(int))
+                curByte = ((array[i] >> (byte * STEP)) + CHAR_MAX + 1) & MASK;
+            else
+                curByte = (array[i] >> (byte * STEP)) & MASK;
+
+            buffer[values[curByte]++] = array[i];
+        }
+
+        memcpy(array, buffer, sizeof(int) * size);
+    }
+
+    printf("Coint of comparison: %lld\n", countComparison);
+
+    free(buffer);
+}
 
 
-void merge(const int *arrayA, const size_t sizeA, const int *arrayB, const size_t sizeB, int *buffer) {
+void merge(const int *arrayA, const size_t sizeA, const int *arrayB, const size_t sizeB, int *buffer, long long countComparison) {
     size_t i = 0;
     size_t j = 0;
     while (i < sizeA || j < sizeB) {
+        countComparison += 2;
         if (j == sizeB || i < sizeA && arrayA[i] < arrayB[j]) {
+            countComparison += 2;
             buffer[i + j] = arrayA[i];
             i++;
         }
@@ -236,40 +272,81 @@ void merge(const int *arrayA, const size_t sizeA, const int *arrayB, const size_
     }
 }
 
-void merge_sort_(int *array, const size_t left, const size_t right, const int *buffer) {
+void merge_sort_(int *array, const size_t left, const size_t right, int *buffer, long long countComparison) {
     size_t n = right - left;
-    if (n <= 1)
+    if (n <= 1) {
+        countComparison++;
         return;
+    }
 
     size_t middle = (left + right) / 2;
-    merge_sort_(array, left, middle, buffer);
-    merge_sort_(array, middle, right, buffer);
+    merge_sort_(array, left, middle, buffer, countComparison);
+    merge_sort_(array, middle, right, buffer, countComparison);
 
-    merge(array + left, middle - left, array + middle, right - middle, buffer);
+    merge(array + left, middle - left, array + middle, right - middle, buffer, countComparison);
     memcpy(array + left, buffer, sizeof(int) * n);
 }
 
 void merge_sort(int *array, const size_t size) {
     int *buffer = (int *) malloc(sizeof(int) * size);
-    merge_sort_(array, 0, size, buffer);
+    long long countComparison = 0;
+    merge_sort_(array, 0, size, buffer, countComparison);
+
+    printf("Coint of comparison: %lld\n", countComparison);
 
     free(buffer);
 }
 
+void qsort_ass(int *array, const size_t size) {
+    size_t left = 0;
+    size_t right = size - 1;
+    size_t middle = (right - left) / 2;
+    long long countComparison = 0;
+    do {
+        countComparison++;
+        while (array[left] < array[middle]) {
+            countComparison++;
+            left++;
+        }
+        while (array[right] > array[middle]) {
+            countComparison++;
+            right--;
+        }
 
-int compare_int(const void *a, const void *b) {
-    int arg1 = *(int *) a;
-    int arg2 = *(int *) b;
-    if (arg1 < arg2) {
+        if (left <= right) {
+            countComparison++;
+            swapVoid(&array[left], &array[right], sizeof(int));
+
+            left++;
+            right--;
+        }
+    } while (left <= right);
+
+    if (right > 0) {
+        countComparison++;
+        qsort_int(array, right + 1);
+    }
+    if (left < size) {
+        countComparison++;
+        qsort_int(&array[left], size - left);
+    }
+
+    printf("Coint of comparison: %lld\n", countComparison);
+}
+
+int cmp_int(const void *pa, const void *pb) {
+    int arg1 = *(const int *) pa;
+    int arg2 = *(const int *) pb;
+
+    if (arg1 < arg2)
         return -1;
-    }
-    if (arg1 > arg2) {
+
+    if (arg1 > arg2)
         return 1;
-    }
 
     return 0;
 }
 
 void qsort_int(int *array, const size_t size) {
-    qsort(array, size, sizeof(int), compare_int);
+    qsort(array, size, sizeof(int), cmp_int);
 }

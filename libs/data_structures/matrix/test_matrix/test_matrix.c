@@ -519,7 +519,7 @@ void test_matrix() {
     test_transposeIfMatrixHasNotEqualSumOfRows();
     test_isMutuallyInverseMatrices();
     test_findSumOfMaxesOfPseudoDiagonal();
-    //test_getMinInArea();
+    test_getMinInArea();
     test_sortByDistance();
     test_countEqClassesByRowsSum();
     test_getNSpecialElement();

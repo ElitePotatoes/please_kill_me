@@ -6,13 +6,31 @@
 
 #IncludeRegexTransform: 
 
-C:/Users/elite/CLionProjects/Lab/libs/algorithms/algorithm.c
-algorithm.h
-C:/Users/elite/CLionProjects/Lab/libs/algorithms/algorithm.h
-
-C:/Users/elite/CLionProjects/Lab/libs/algorithms/algorithm.h
+C:/Users/elite/CLionProjects/main/libs/algorithms/algorithm.h
 stdlib.h
 -
 stdio.h
+-
+math.h
+-
+stddef.h
+-
+
+C:/Users/elite/CLionProjects/main/libs/algorithms/array/array.c
+stdio.h
+-
+limits.h
+-
+assert.h
+-
+array.h
+C:/Users/elite/CLionProjects/main/libs/algorithms/array/array.h
+C:/Users/elite/CLionProjects/main/libs/algorithms/algorithm.h
+-
+
+C:/Users/elite/CLionProjects/main/libs/algorithms/array/array.h
+stddef.h
+-
+stdbool.h
 -
 

@@ -1,5 +1,5 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/course.dir/libs/discrete_mathematics/first_laboratory_work/sets.c.obj"
+  "CMakeFiles/course.dir/libs/experiments/core_exp/experiments.c.obj"
   "CMakeFiles/course.dir/main.c.obj"
   "course.exe"
   "course.exe.manifest"

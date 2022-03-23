@@ -10,6 +10,8 @@ set(CMAKE_DEPENDS_LANGUAGES
 set(CMAKE_DEPENDS_CHECK_C
   "C:/Users/elite/CLionProjects/main/libs/algorithms/algorithm.c" "C:/Users/elite/CLionProjects/main/cmake-build-debug/Libs/algorithms/CMakeFiles/algorithms.dir/algorithm.c.obj"
   "C:/Users/elite/CLionProjects/main/libs/algorithms/array/array.c" "C:/Users/elite/CLionProjects/main/cmake-build-debug/Libs/algorithms/CMakeFiles/algorithms.dir/array/array.c.obj"
+  "C:/Users/elite/CLionProjects/main/libs/algorithms/string/string_.c" "C:/Users/elite/CLionProjects/main/cmake-build-debug/Libs/algorithms/CMakeFiles/algorithms.dir/string/string_.c.obj"
+  "C:/Users/elite/CLionProjects/main/libs/algorithms/string/test/test_string.c" "C:/Users/elite/CLionProjects/main/cmake-build-debug/Libs/algorithms/CMakeFiles/algorithms.dir/string/test/test_string.c.obj"
   )
 set(CMAKE_C_COMPILER_ID "GNU")
 

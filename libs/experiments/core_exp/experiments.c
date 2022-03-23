@@ -4,7 +4,7 @@ void check_time(void (*sort_func)(int *, size_t),
                 void (*generate_func)(int *, size_t),
                 size_t size, char *experiment_name) {
     static size_t run_counter = 1;
-    static int inner_buffer[100000];
+    static int inner_buffer[10000000];
     generate_func(inner_buffer, size);
     printf("Run #%zu | ", run_counter++);
     printf("Name: %s\n", experiment_name);
@@ -16,10 +16,10 @@ void check_time(void (*sort_func)(int *, size_t),
 
     printf("Status: ");
     if (is_ordered(inner_buffer, size)) {
-        printf("OK! Time: %.3f s.\n", time);
+        printf("OK! Time: %.3f s.\n\n", time);
 
         char filename[256];
-        sprintf(filename, ".data/%s.csv", experiment_name);
+        sprintf(filename, "data/%s.csv", experiment_name);
         FILE *f = fopen(filename, "a");
         if (f == NULL) {
             printf("File open error %s", filename);
@@ -39,17 +39,17 @@ void check_time(void (*sort_func)(int *, size_t),
 
 void time_experiment() {
     sort_function sorts[] = {
-        {bubble_sort,       "bubble sort"},
-        {shaker_sort,       "shaker sort"},
-        {selection_sort,    "selection sort"},
-        {intersection_sort, "intersection sort"},
-        {shell_sort,        "shell sort"},
-        {heap_sort,         "heap sort"},
-        {comb_sort,         "comb sort"},
-        {count_sort,        "count sort"},
-        {radix_sort,        "radix sort"},
-        {merge_sort,        "merge sort"},
-        {qsort_int,         "qsort"},
+        //{bubble_sort,       "bubble_sort"},
+        //{shaker_sort,       "shaker_sort"},
+        //{comb_sort,         "comb_sort"},
+        //{selection_sort,    "selection_sort"},
+        //{intersection_sort, "intersection_sort"},
+        //{shell_sort,        "shell_sort"},
+        //{heap_sort,         "heap_sort"},
+        //{count_sort,        "count_sort"},
+        {radix_sort,        "radix_sort"},
+        //{merge_sort,        "merge_sort"},
+        //{qsort_int,         "qsort_"},
     };
     const unsigned FUNCS_N = ARRAY_SIZE(sorts);
 
@@ -60,8 +60,8 @@ void time_experiment() {
     };
     const unsigned CASES_N = ARRAY_SIZE(generation);
 
-    for (size_t size = 10000; size <= 10000; size += 10000) {
-        printf("- - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n");
+    for (size_t size = 100000; size <= 100000; size += 100000) {
+        printf("**************************************\n");
         printf("Size: %d\n", size);
 
         for (size_t i = 0; i < FUNCS_N; ++i) {

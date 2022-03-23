@@ -65,19 +65,3 @@ bitset bitset_symmetricDifference(bitset set1, bitset set2) {
 bitset bitset_complement(bitset set) {
     return (bitset) {~set.values, set.maxValue};
 }
-
-void bitset_print(bitset set) {
-    printf("{");
-
-    bool isEmpty = true;
-    for (int i = 0; i <= set.maxValue; ++ i)
-        if (bitset_in(set, i)) {
-            printf("%d, ", i);
-            isEmpty = false;
-        }
-
-    if (isEmpty)
-        printf ("}\n");
-    else
-        printf ("\b\b}\n") ;
-}

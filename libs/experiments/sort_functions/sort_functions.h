@@ -24,7 +24,7 @@ void shaker_sort(int *array, size_t size);
 //сортировка расчёской.
 //bad: n^2
 //average: n^2
-//best: n * log n
+//best: n * log(n)
 void comb_sort(int *array, size_t size);
 
 //сортировка выбором.
@@ -41,13 +41,13 @@ void intersection_sort(int *array, size_t size);
 
 //сортировка Шелла.
 //bad: n^2
-//average: n * (log n)^2
+//average: n * (log(n))^2
 //best: n
 void shell_sort(int *array, size_t size);
 
 //пирамидальная сортировка.
 //bad: n * log n
-//average: n * log n
+//average: n * log(n)
 //best: n * log n
 void heap_sort(int *array, size_t size);
 
@@ -57,12 +57,6 @@ void heap_sort(int *array, size_t size);
 //best: n
 void count_sort(int *array, size_t size);
 
-//блочная сортировка.
-//bad: n^2
-//average: n + k
-//best: n + k
-void bucket_sort(int *array, size_t size);
-
 //цифровая сортировка.
 //bad: w * n
 //average: w * n
@@ -70,14 +64,14 @@ void bucket_sort(int *array, size_t size);
 void radix_sort(int *array, size_t size);
 
 //сортировка слиянием.
-//bad: n * log n
-//average: n * log n
-//best: n * log n
+//bad: n * log(n)
+//average: n * log(n)
+//best: n * log(n)
 void merge_sort(int *array, size_t size);
 
 //быстрая сортировка.
 //bad: n^2
-//average: n * log n
+//average: n * log(n)
 //best: n
 void qsort_int(int *array, size_t size);
 

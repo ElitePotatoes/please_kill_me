@@ -11,9 +11,9 @@
 
 
 typedef struct unordered_array_set {
-    int *data;          // элементы множества
-    size_t size;        // количество элементов в множестве
-    size_t capacity;    // максимальное количество элементов в множестве
+    int *data;          //элементы множества.
+    size_t size;        //количество элементов в множестве.
+    size_t capacity;    //максимальное количество элементов в множестве.
 } unordered_array_set;
 
 // возвращает пустое множество для capacity элементов
@@ -25,7 +25,7 @@ unordered_array_set unordered_array_set_create_from_array(const int a[], size_t 
 // возвращает позицию элемента в множестве,
 // если значение value имеется в множестве set,
 // иначе - n
-size_t unordered_array_set_in(unordered_array_set set[], int value);
+size_t unordered_array_set_in(unordered_array_set const set[], int value);
 
 // возвращает значение ’истина’, если элементы множеств set1 и set2 равны
 // иначе - ’ложь’
@@ -33,10 +33,10 @@ bool unordered_array_set_isEqual(unordered_array_set set1, unordered_array_set s
 
 // возбуждает исключение, если в множество по адресу set
 // нельзя вставить элемент
-void unordered_array_set_isAbleAppend(unordered_array_set *set);
+void unordered_array_set_isAbleAppend(unordered_array_set const *set);
 
 // добавляет элемент value в множество set
-void unordered_array_set_insert(unordered_array_set set[], int value);
+void unordered_array_set_insert(unordered_array_set *set, int value);
 
 // удаляет элемент value из множества set
 void unordered_array_set_deleteElement(unordered_array_set set[], int value);
